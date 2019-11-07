@@ -22,4 +22,11 @@ public class EN_Melee : MonoBehaviour
         vDif = Vector3.Normalize(vDif);
         cRigid.velocity = vDif * _spd;
     }
+
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+        if(other.GetComponent<PJ_Plasma>() != null){
+            Destroy(gameObject);
+        }
+    }
 }

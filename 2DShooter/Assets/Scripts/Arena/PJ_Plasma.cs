@@ -23,7 +23,7 @@ public class PJ_Plasma : MonoBehaviour
         cRigid.velocity = vDir;
     }
 
-    private void OnColliderEnter(Collider other)
+    private void OnTriggerEnter2D(Collider2D other)
     {
         Debug.Log("Hit something");
         if(other.GetComponent<EN_Melee>())
