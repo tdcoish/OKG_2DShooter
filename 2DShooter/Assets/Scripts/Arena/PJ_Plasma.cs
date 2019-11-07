@@ -25,10 +25,8 @@ public class PJ_Plasma : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        Debug.Log("Hit something");
         if(other.GetComponent<EN_Melee>())
         {
-            Debug.Log("Hit the enemy melee");
             Destroy(gameObject);
         }
     }
