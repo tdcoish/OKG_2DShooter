@@ -14,6 +14,7 @@ public class EN_Melee : MonoBehaviour
 
     public ParticleSystem               PF_HitByBullet;
     public ParticleSystem               PF_Explode;
+    public GFX_Gibs                     PF_Gibs;
 
     void Start()
     {
@@ -46,6 +47,7 @@ public class EN_Melee : MonoBehaviour
     private void KillYourself()
     {
         Instantiate(PF_Explode, transform.position, transform.rotation);
+        Instantiate(PF_Gibs, transform.position, transform.rotation);
         Destroy(gameObject);
     }
 }

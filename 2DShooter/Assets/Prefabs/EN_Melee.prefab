@@ -100,6 +100,7 @@ MonoBehaviour:
     type: 3}
   PF_Explode: {fileID: 7988837159611502830, guid: 33914ec7e65dc4545ab6104ce540781b,
     type: 3}
+  PF_Gibs: {fileID: 5399777002084749434, guid: ce204fee56c1a65468e8a17b3cbe12f7, type: 3}
 --- !u!50 &411031447043653680
 Rigidbody2D:
   serializedVersion: 4
