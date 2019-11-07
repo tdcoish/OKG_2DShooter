@@ -2,6 +2,7 @@
 Spawn in the different enemies.
 *************************************************************************************/
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GM_Man : MonoBehaviour
 {
@@ -13,7 +14,7 @@ public class GM_Man : MonoBehaviour
 
     void Start()
     {
-        
+        TDC_EventManager.FAddHandler(TDC_GE.GE_PCDeath, E_PlayerDied);
     }
 
     void Update()
@@ -24,5 +25,10 @@ public class GM_Man : MonoBehaviour
                 _lastSpawn = Time.time;
             }
         }
+    }
+
+    private void E_PlayerDied()
+    {
+        SceneManager.LoadScene("Death");        
     }
 }

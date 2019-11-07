@@ -130,10 +130,10 @@ GameObject:
   m_Component:
   - component: {fileID: 2268334}
   - component: {fileID: 2268331}
+  - component: {fileID: 2268336}
   - component: {fileID: 2268333}
   - component: {fileID: 2268332}
   - component: {fileID: 2268335}
-  - component: {fileID: 2268336}
   m_Layer: 0
   m_Name: PC
   m_TagString: Untagged

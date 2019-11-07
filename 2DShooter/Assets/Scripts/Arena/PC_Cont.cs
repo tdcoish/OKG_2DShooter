@@ -51,4 +51,13 @@ public class PC_Cont : MonoBehaviour
 		transform.eulerAngles = new Vector3(0, 0, angle);
 	}
 
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+        Debug.Log("Hit something");
+        if(other.GetComponent<EN_Melee>()){
+            Debug.Log("Her");
+            TDC_EventManager.FBroadcast(TDC_GE.GE_PCDeath);
+        }
+    }
+
 }
