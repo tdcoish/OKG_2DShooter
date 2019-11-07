@@ -19,7 +19,8 @@ public class PC_Cont : MonoBehaviour
     void Update()
     {
         cRigid.velocity = HandleInputForVel();
-
+        // RotateToMouse();
+        cGun.FRun();
     }
 
     private Vector3 HandleInputForVel()
@@ -39,5 +40,15 @@ public class PC_Cont : MonoBehaviour
         }
         return vVel;
     }
+
+    private void RotateToMouse(){
+		Camera c = Camera.main;
+		Vector2 msPos = c.ScreenToWorldPoint(Input.mousePosition);
+
+		Vector2 distance = msPos - (Vector2)transform.position;
+		float angle = Mathf.Atan2(distance.y, distance.x) * Mathf.Rad2Deg;
+		angle -= 90;
+		transform.eulerAngles = new Vector3(0, 0, angle);
+	}
 
 }

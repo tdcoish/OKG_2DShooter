@@ -16,7 +16,10 @@ public class PC_Gun : MonoBehaviour
             if(Time.time - _lastFire > _fireRate)
             {
                 PJ_Plasma p = Instantiate(PF_Plasmoid, transform.position, transform.rotation);
-                p.FFireDirection(FindObjectOfType<PC_Cont>().transform.position - transform.position);
+                Vector3 vDir = FindObjectOfType<UI_CrossHair>().transform.position - transform.position;
+                p.FFireDirection(vDir - transform.position);
+
+                _lastFire = Time.time;
             }
         }
     }
