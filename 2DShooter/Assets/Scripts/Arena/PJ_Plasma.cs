@@ -8,9 +8,12 @@ public class PJ_Plasma : MonoBehaviour
     private Rigidbody2D                             cRigid;
     public float                                    _spd;
 
-    void Start()
+    void Awake()
     {
         cRigid = GetComponent<Rigidbody2D>();    
+        if(cRigid == null){
+            Debug.Log("NO RIGIDBODY");
+        }
     }
 
     public void FFireDirection(Vector3 vDir)
@@ -18,6 +21,7 @@ public class PJ_Plasma : MonoBehaviour
         vDir = Vector3.Normalize(vDir);
         vDir *= _spd;
         cRigid.velocity = vDir;
+        Debug.Log(cRigid.velocity);
     }
 
     private void OnColliderEnter(Collider other)
