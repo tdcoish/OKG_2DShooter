@@ -6,15 +6,23 @@ using UnityEngine;
 public class PC_Cont : MonoBehaviour
 {
     private Rigidbody2D                     cRigid;
+    private PC_Gun                          cGun;
     
     public float                            _spd;
 
     void Start()
     {
-        cRigid = GetComponent<Rigidbody2D>();    
+        cRigid = GetComponent<Rigidbody2D>(); 
+        cGun = GetComponent<PC_Gun>();   
     }
 
     void Update()
+    {
+        cRigid.velocity = HandleInputForVel();
+
+    }
+
+    private Vector3 HandleInputForVel()
     {
         Vector2 vVel = new Vector2();
         if(Input.GetKey(KeyCode.A)){
@@ -29,7 +37,7 @@ public class PC_Cont : MonoBehaviour
         if(Input.GetKey(KeyCode.S)){
             vVel.y -= _spd;
         }
-
-        cRigid.velocity = vVel;
+        return vVel;
     }
+
 }
