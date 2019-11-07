@@ -95,6 +95,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _spd: 0.5
+  _health: 100
+  PF_HitByBullet: {fileID: 5325226421071126695, guid: faf126ad3db7b1c4b9c8515f26cb0a9e,
+    type: 3}
+  PF_Explode: {fileID: 7988837159611502830, guid: 33914ec7e65dc4545ab6104ce540781b,
+    type: 3}
 --- !u!50 &411031447043653680
 Rigidbody2D:
   serializedVersion: 4

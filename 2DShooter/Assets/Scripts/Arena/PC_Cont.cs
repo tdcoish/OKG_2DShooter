@@ -9,6 +9,9 @@ public class PC_Cont : MonoBehaviour
     private PC_Gun                          cGun;
     
     public float                            _spd;
+    public float                            _health = 100f;
+
+    public UI_PC                            rUI;
 
     void Start()
     {
@@ -21,6 +24,8 @@ public class PC_Cont : MonoBehaviour
         cRigid.velocity = HandleInputForVel();
         RotateToMouse();
         cGun.FRun();
+        CheckDead();
+        rUI.FSetBarSize(_health/100f);
     }
 
     private Vector3 HandleInputForVel()
@@ -54,8 +59,14 @@ public class PC_Cont : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D other)
     {
         if(other.GetComponent<EN_Melee>()){
-            TDC_EventManager.FBroadcast(TDC_GE.GE_PCDeath);
+            _health -= 35f;
         }
     }
 
+    private void CheckDead()
+    {
+        if(_health <= 0f){
+            TDC_EventManager.FBroadcast(TDC_GE.GE_PCDeath);
+        }
+    }
 }
