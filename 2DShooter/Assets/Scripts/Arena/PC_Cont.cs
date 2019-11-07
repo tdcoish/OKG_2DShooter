@@ -19,7 +19,7 @@ public class PC_Cont : MonoBehaviour
     void Update()
     {
         cRigid.velocity = HandleInputForVel();
-        // RotateToMouse();
+        RotateToMouse();
         cGun.FRun();
     }
 
