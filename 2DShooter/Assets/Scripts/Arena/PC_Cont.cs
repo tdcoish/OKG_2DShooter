@@ -61,6 +61,13 @@ public class PC_Cont : MonoBehaviour
         if(other.GetComponent<EN_Melee>()){
             _health -= 35f;
         }
+
+        if(other.GetComponent<PCK_Health>()){
+            _health += 10f;
+            if(_health > 100f){
+                _health = 100f;
+            }
+        }
     }
 
     private void CheckDead()

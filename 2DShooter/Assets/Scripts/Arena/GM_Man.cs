@@ -8,9 +8,16 @@ public class GM_Man : MonoBehaviour
 {
     [SerializeField]
     private EN_Melee                PF_Melee;
+    [SerializeField]
+    private PCK_Health              PF_HealthPack;
+
     public float                    _spawnRate;
     private float                   _lastSpawn;
     public GM_Spawn[]               _spawnPoints;
+
+    public float                    _healthSpawnRate;
+    public float                    _lastHealthSpawn;
+    public GM_HP_Spawn[]            _healthSpawnPoints;
 
     void Start()
     {
@@ -25,6 +32,13 @@ public class GM_Man : MonoBehaviour
                 _lastSpawn = Time.time;
             }
         }
+
+        if(Time.time - _lastHealthSpawn > _healthSpawnRate){
+            for(int i=0; i<_healthSpawnPoints.Length; i++){
+                Instantiate(PF_HealthPack, _healthSpawnPoints[i].transform.position, transform.rotation);
+                _lastHealthSpawn = Time.time;
+            }
+        }    
     }
 
     private void E_PlayerDied()
