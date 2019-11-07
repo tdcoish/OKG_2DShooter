@@ -3,20 +3,17 @@
 *************************************************************************************/
 using UnityEngine;
 
+[RequireComponent(typeof(UT_LifeTime))]
 public class GFX_Gibs : MonoBehaviour
 {
+
     public GFX_Giblet                       _femur;
     public GFX_Giblet                       _skull;
     public GFX_Giblet                       _pelvis;
 
-    public float                            _lifeTime = 3f;
-    private float                           _spawnTime;
-
     // Scatter the gibs to the wind
     void Start()
     {
-        _spawnTime = Time.time;
-
         Vector3 vVel = new Vector3();
         vVel.x = -0.2f;   vVel.y = 0.4f;
         _femur.GetComponent<Rigidbody2D>().velocity = vVel;
@@ -28,7 +25,7 @@ public class GFX_Gibs : MonoBehaviour
 
     void Update()
     {
-        if(Time.time - _spawnTime > _lifeTime){
+        if(GetComponent<UT_LifeTime>()._lifeOver){
             Destroy(gameObject);
         }
     }

@@ -7,6 +7,7 @@ public class PC_Cont : MonoBehaviour
 {
     private Rigidbody2D                     cRigid;
     private PC_Gun                          cGun;
+    private PC_Grnd                         cGrnd;
     
     public float                            _spd;
     public float                            _health = 100f;
@@ -17,6 +18,7 @@ public class PC_Cont : MonoBehaviour
     {
         cRigid = GetComponent<Rigidbody2D>(); 
         cGun = GetComponent<PC_Gun>();   
+        cGrnd = GetComponent<PC_Grnd>();
     }
 
     void Update()
@@ -24,6 +26,7 @@ public class PC_Cont : MonoBehaviour
         cRigid.velocity = HandleInputForVel();
         RotateToMouse();
         cGun.FRun();
+        cGrnd.FRun();
         CheckDead();
         rUI.FSetBarSize(_health/100f);
     }
@@ -67,6 +70,9 @@ public class PC_Cont : MonoBehaviour
             if(_health > 100f){
                 _health = 100f;
             }
+        }
+        if(other.GetComponent<EX_Grenade>()){
+            _health -= 50f;
         }
     }
 

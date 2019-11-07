@@ -352,6 +352,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5399777002084749437}
   - component: {fileID: 5399777002084749434}
+  - component: {fileID: 6062348074000866690}
   m_Layer: 0
   m_Name: GFX_Gibs
   m_TagString: Untagged
@@ -391,4 +392,17 @@ MonoBehaviour:
   _femur: {fileID: 5399777000451691416}
   _skull: {fileID: 5399777000927148573}
   _pelvis: {fileID: 5399777000826282273}
-  _lifeTime: 3
+--- !u!114 &6062348074000866690
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5399777002084749435}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 553b3c0a10fcd5546811230d9ea8a25f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _lifeOver: 0
+  _lifespan: 3

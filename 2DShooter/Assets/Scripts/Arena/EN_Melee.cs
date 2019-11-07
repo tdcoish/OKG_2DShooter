@@ -42,6 +42,9 @@ public class EN_Melee : MonoBehaviour
         if(other.GetComponent<PC_Cont>()){
             _health = 0f;
         }
+        if(other.GetComponent<EX_Grenade>()){
+            _health = 0f;
+        }
     }
 
     private void KillYourself()
