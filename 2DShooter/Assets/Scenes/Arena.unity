@@ -133,6 +133,7 @@ GameObject:
   - component: {fileID: 2268333}
   - component: {fileID: 2268332}
   - component: {fileID: 2268335}
+  - component: {fileID: 2268336}
   m_Layer: 0
   m_Name: PC
   m_TagString: Untagged
@@ -251,6 +252,32 @@ MonoBehaviour:
   _fireRate: 0.1
   PF_Plasmoid: {fileID: 2270897172381191809, guid: 100849f6bb93b784c99fc9a7ecb5143d,
     type: 3}
+--- !u!61 &2268336
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2268330}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 1.93, y: 2.26}
+    newSize: {x: 1.28, y: 1.28}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 1.93, y: 2.26}
+  m_EdgeRadius: 0
 --- !u!1 &191019595
 GameObject:
   m_ObjectHideFlags: 0
@@ -337,7 +364,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 191019595}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1.5194991, y: 0.14762527, z: -15.167969}
+  m_LocalPosition: {x: 1.5194991, y: -4.44, z: -15.167969}
   m_LocalScale: {x: 0.2, y: 0.2, z: 1}
   m_Children: []
   m_Father: {fileID: 0}

@@ -21,10 +21,9 @@ public class PJ_Plasma : MonoBehaviour
         vDir = Vector3.Normalize(vDir);
         vDir *= _spd;
         cRigid.velocity = vDir;
-        Debug.Log(cRigid.velocity);
     }
 
-    private void OnColliderEnter(Collider other)
+    private void OnTriggerEnter2D(Collider2D other)
     {
         Debug.Log("Hit something");
         if(other.GetComponent<EN_Melee>())
