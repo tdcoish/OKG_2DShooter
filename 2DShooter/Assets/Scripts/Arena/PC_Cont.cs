@@ -86,6 +86,13 @@ public class PC_Cont : MonoBehaviour
         }
     }
 
+    private void OnTriggerStay2D(Collider2D other)
+    {
+        if(other.GetComponent<EN_Lava>()){
+            _health -= Time.deltaTime * 20f;
+        }
+    }
+
     private void CheckDead()
     {
         if(_health <= 0f){
