@@ -14,6 +14,6 @@ public class AD_PC : MonoBehaviour
     }
     public void FMisFireGun()
     {
-        Instantiate(PF_Gunshot, transform.position, transform.rotation);        
+        Instantiate(PF_MisFire, transform.position, transform.rotation);        
     }
 }
