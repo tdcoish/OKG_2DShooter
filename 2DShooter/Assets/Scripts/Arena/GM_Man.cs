@@ -21,6 +21,11 @@ public class GM_Man : MonoBehaviour
     public float                    _lastHealthSpawn;
     public GM_HP_Spawn[]            _healthSpawnPoints;
 
+    void Awake()
+    {
+        TDC_EventManager.FRemoveAllHandlers();
+    }
+
     void Start()
     {
         cScore = GetComponent<GM_Score>();
@@ -53,6 +58,7 @@ public class GM_Man : MonoBehaviour
 
     private void E_PlayerDied()
     {
+        GB_Score._score = cScore._score;
         SceneManager.LoadScene("Death");        
     }
 }
