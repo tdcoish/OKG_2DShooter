@@ -74,6 +74,9 @@ public class PC_Cont : MonoBehaviour
         if(other.GetComponent<EX_Grenade>()){
             _health -= 50f;
         }
+        if(other.GetComponent<PJ_Base>()){
+            _health -= 60f;
+        }
     }
 
     private void CheckDead()

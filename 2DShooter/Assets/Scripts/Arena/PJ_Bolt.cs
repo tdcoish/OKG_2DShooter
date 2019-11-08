@@ -3,7 +3,7 @@
 *************************************************************************************/
 using UnityEngine;
 
-public class PJ_Plasma : PJ_Base
+public class PJ_Bolt : PJ_Base
 {
 
     void Update()
@@ -15,8 +15,11 @@ public class PJ_Plasma : PJ_Base
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if(other.GetComponent<EN_Melee>())
-        {
+        // if(other.GetComponent<EN_Melee>()){
+        //     Destroy(gameObject);
+        // }
+
+        if(other.GetComponent<PC_Cont>()){
             Destroy(gameObject);
         }
     }
