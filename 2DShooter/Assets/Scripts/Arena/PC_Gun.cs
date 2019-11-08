@@ -48,6 +48,9 @@ public class PC_Gun : MonoBehaviour
                 }
             }
         }
+        if(Input.GetMouseButtonDown(0)){
+            cAudio.FMisFireGun();
+        }
     }
 
 }
