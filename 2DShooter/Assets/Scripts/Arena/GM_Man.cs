@@ -11,6 +11,8 @@ public class GM_Man : MonoBehaviour
     [SerializeField]
     private PCK_Health              PF_HealthPack;
 
+    private GM_Score                cScore;
+
     public float                    _spawnRate;
     private float                   _lastSpawn;
     public GM_Spawn[]               _spawnPoints;
@@ -19,10 +21,9 @@ public class GM_Man : MonoBehaviour
     public float                    _lastHealthSpawn;
     public GM_HP_Spawn[]            _healthSpawnPoints;
 
-    public int                      _score;
-
     void Start()
     {
+        cScore = GetComponent<GM_Score>();
         TDC_EventManager.FAddHandler(TDC_GE.GE_PCDeath, E_PlayerDied);
 
         _lastSpawn = _spawnRate * -1f;

@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 2221675571943352147}
   - component: {fileID: 3076001559258025039}
   - component: {fileID: 6171029179923116431}
+  - component: {fileID: 69993670}
   m_Layer: 0
   m_Name: PT_HealthPickup
   m_TagString: Untagged
@@ -4752,3 +4753,16 @@ ParticleSystemRenderer:
   m_Mesh2: {fileID: 0}
   m_Mesh3: {fileID: 0}
   m_MaskInteraction: 0
+--- !u!114 &69993670
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2859030533349902080}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9802f64e6c8e8804d9a9c7a083b3cb00, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _lifeTime: 10

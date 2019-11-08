@@ -17,7 +17,7 @@ This might be unusable.
 using UnityEngine;
 using System.Collections.Generic;
 
-public enum TDC_GE { GE_PCDeath }; // ... Other events
+public enum TDC_GE { GE_PCDeath, GE_EDeath, GE_PCK_AM, GE_PCK_HLT }; // ... Other events
 public static class TDC_EventManager
 {
     // Stores the delegates that get called when an event is fired

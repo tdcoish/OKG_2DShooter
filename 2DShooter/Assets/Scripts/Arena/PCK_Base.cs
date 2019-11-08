@@ -20,7 +20,13 @@ public class PCK_Base : MonoBehaviour
     {
         if(other.GetComponent<PC_Cont>()){
             Instantiate(PF_Particles, transform.position, transform.rotation);
+            PickupEvent();
             Destroy(gameObject);
         }
+    }
+
+    protected virtual void PickupEvent()
+    {
+
     }
 }
