@@ -22,6 +22,8 @@ public class GM_Man : MonoBehaviour
     void Start()
     {
         TDC_EventManager.FAddHandler(TDC_GE.GE_PCDeath, E_PlayerDied);
+
+        _lastSpawn = _spawnRate * -1f;
     }
 
     void Update()

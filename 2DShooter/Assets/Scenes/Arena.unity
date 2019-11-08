@@ -1717,7 +1717,7 @@ MonoBehaviour:
   PF_Melee: {fileID: 331203084848263746, guid: 7fa9be658e29758479bd9d6b3b7102a8, type: 3}
   PF_HealthPack: {fileID: 6217487067244641993, guid: 3696c17546f549e4b90ba586a459a52c,
     type: 3}
-  _spawnRate: 2
+  _spawnRate: 4
   _spawnPoints:
   - {fileID: 8615390862451630179}
   - {fileID: 739540123}

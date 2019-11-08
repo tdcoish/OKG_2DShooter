@@ -17,7 +17,7 @@ public class EN_Base : MonoBehaviour
     public GFX_Gibs                     PF_Gibs;
  
  
-    void Start()
+    protected void Start()
     {
         cRigid = GetComponent<Rigidbody2D>();
         rPC = FindObjectOfType<PC_Cont>();

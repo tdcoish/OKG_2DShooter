@@ -89,12 +89,16 @@ public class PC_Cont : MonoBehaviour
         }
     }
 
-    // private void OnColliderEnter2D(Collision2D other)
-    // {
-    //     if(other.gameObject.GetComponent<PJ_Bolt>()){
-    //         _health -= 60f;
-    //     }
-    // }
+    private void OnColliderEnter2D(Collision2D other)
+    {
+        if(other.gameObject.GetComponent<PJ_Bolt>()){
+            _health -= 60f;
+        }
+
+        if(other.gameObject.GetComponent<ENV_Border>()){
+            cRigid.velocity = Vector3.zero;
+        }
+    }
 
     private void OnTriggerStay2D(Collider2D other)
     {
