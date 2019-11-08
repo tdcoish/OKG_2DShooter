@@ -5,10 +5,10 @@ using UnityEngine;
 
 public class AD_PC : MonoBehaviour
 {
-    public AudioSource                              _Gunshot;
+    public AudioSource                              PF_Gunshot;
 
     public void FFireGun()
     {
-        _Gunshot.Play();
+        Instantiate(PF_Gunshot, transform.position, transform.rotation);
     }
 }
