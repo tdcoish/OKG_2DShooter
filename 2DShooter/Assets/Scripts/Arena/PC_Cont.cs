@@ -8,6 +8,7 @@ public class PC_Cont : MonoBehaviour
     private Rigidbody2D                     cRigid;
     private PC_Gun                          cGun;
     private PC_Grnd                         cGrnd;
+    private PC_Shields                      cShields;
     
     public float                            _spd;
     public float                            _maxHealth = 1000f;
@@ -20,6 +21,7 @@ public class PC_Cont : MonoBehaviour
         cRigid = GetComponent<Rigidbody2D>(); 
         cGun = GetComponent<PC_Gun>();   
         cGrnd = GetComponent<PC_Grnd>();
+        cShields = GetComponent<PC_Shields>();
 
         _health = _maxHealth;
     }
@@ -33,6 +35,7 @@ public class PC_Cont : MonoBehaviour
         CheckDead();
         rUI.FSetBarSize(_health/_maxHealth);
         rUI.FSetAmmoBarSize(cGun._ammo, cGun._maxAmmo);
+        rUI.FSetShieldBarSize(cShields._val, cShields._maxVal);
     }
 
     private Vector3 HandleInputForVel()
@@ -66,7 +69,7 @@ public class PC_Cont : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D other)
     {
         if(other.GetComponent<EN_Melee>()){
-            _health -= 35f;
+            _health -= cShields.FTakeDamageGiveRemainder(35f);
         }
 
         if(other.GetComponent<PCK_Health>()){
@@ -82,10 +85,10 @@ public class PC_Cont : MonoBehaviour
             }
         }
         if(other.GetComponent<EX_Grenade>()){
-            _health -= 50f;
+            _health -= cShields.FTakeDamageGiveRemainder(50f);
         }
         if(other.GetComponent<PJ_Base>()){
-            _health -= 60f;
+            _health -= cShields.FTakeDamageGiveRemainder(60f);
         }
     }
 

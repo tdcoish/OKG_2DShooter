@@ -135,6 +135,7 @@ GameObject:
   - component: {fileID: 2268332}
   - component: {fileID: 2268335}
   - component: {fileID: 2268337}
+  - component: {fileID: 2268338}
   m_Layer: 0
   m_Name: PC
   m_TagString: Untagged
@@ -176,8 +177,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _spd: 8
-  _maxHealth: 1000
-  _health: 1000
+  _maxHealth: 100
+  _health: 0
   rUI: {fileID: 4371313408928443107}
 --- !u!212 &2268333
 SpriteRenderer:
@@ -307,6 +308,23 @@ MonoBehaviour:
   _fireRate: 3
   PF_Grenade: {fileID: 7785129882358555494, guid: 490420ab13b64314090381e164cdbdb1,
     type: 3}
+--- !u!114 &2268338
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2268330}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1d102f0071e8ae042b5a16fea789795b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _state: 0
+  _maxVal: 100
+  _val: 0
+  _timeBeforeRechargeStarts: 2
+  _rechargeRate: 20
 --- !u!1 &60910107
 GameObject:
   m_ObjectHideFlags: 0
@@ -3033,6 +3051,14 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Pivot.y
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 564856701, guid: 00b2b715f27cdcb40a04783d4e1f9a41, type: 3}
+      propertyPath: m_Type
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 564856701, guid: 00b2b715f27cdcb40a04783d4e1f9a41, type: 3}
+      propertyPath: m_FillAmount
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 00b2b715f27cdcb40a04783d4e1f9a41, type: 3}

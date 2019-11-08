@@ -8,6 +8,7 @@ public class UI_PC : MonoBehaviour
 {
     public Image                            _ammoBar;
     public Image                            _healthBar;
+    public Image                            _shieldBar;
     public Text                             _scoreText;
 
     public void FSetBarSize(float percZeroToOne)
@@ -19,6 +20,12 @@ public class UI_PC : MonoBehaviour
     {
         float perc = (float)curAmmo / (float)maxAmmo;
         _ammoBar.fillAmount = perc;
+    }
+
+    public void FSetShieldBarSize(float curVal, float maxVal)
+    {
+        float perc = curVal/maxVal;
+        _shieldBar.fillAmount = perc;
     }
 
     public void FSetScoreText(int score)
