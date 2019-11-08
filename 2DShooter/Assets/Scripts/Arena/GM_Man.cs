@@ -19,6 +19,8 @@ public class GM_Man : MonoBehaviour
     public float                    _lastHealthSpawn;
     public GM_HP_Spawn[]            _healthSpawnPoints;
 
+    public int                      _score;
+
     void Start()
     {
         TDC_EventManager.FAddHandler(TDC_GE.GE_PCDeath, E_PlayerDied);

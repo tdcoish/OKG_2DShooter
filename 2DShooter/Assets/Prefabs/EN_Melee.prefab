@@ -108,8 +108,8 @@ MonoBehaviour:
     type: 3}
   _state: 0
   _maxChargeDis: 2
-  _chargeSpdBoost: 3
-  _chargeTime: 2
+  _chargeSpdBoost: 2
+  _chargeTime: 1.5
   _recoveryTime: 1
 --- !u!50 &411031447043653680
 Rigidbody2D:
