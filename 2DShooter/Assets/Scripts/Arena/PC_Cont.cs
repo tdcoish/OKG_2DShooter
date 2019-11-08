@@ -10,7 +10,8 @@ public class PC_Cont : MonoBehaviour
     private PC_Grnd                         cGrnd;
     
     public float                            _spd;
-    public float                            _health = 100f;
+    public float                            _maxHealth = 1000f;
+    public float                            _health;
 
     public UI_PC                            rUI;
 
@@ -19,6 +20,8 @@ public class PC_Cont : MonoBehaviour
         cRigid = GetComponent<Rigidbody2D>(); 
         cGun = GetComponent<PC_Gun>();   
         cGrnd = GetComponent<PC_Grnd>();
+
+        _health = _maxHealth;
     }
 
     void Update()
@@ -28,7 +31,7 @@ public class PC_Cont : MonoBehaviour
         cGun.FRun();
         cGrnd.FRun();
         CheckDead();
-        rUI.FSetBarSize(_health/100f);
+        rUI.FSetBarSize(_health/_maxHealth);
         rUI.FSetAmmoBarSize(cGun._ammo, cGun._maxAmmo);
     }
 
@@ -68,8 +71,8 @@ public class PC_Cont : MonoBehaviour
 
         if(other.GetComponent<PCK_Health>()){
             _health += 10f;
-            if(_health > 100f){
-                _health = 100f;
+            if(_health > _maxHealth){
+                _health = _maxHealth;
             }
         }
         if(other.GetComponent<PCK_Ammo>()){
@@ -85,6 +88,13 @@ public class PC_Cont : MonoBehaviour
             _health -= 60f;
         }
     }
+
+    // private void OnColliderEnter2D(Collision2D other)
+    // {
+    //     if(other.gameObject.GetComponent<PJ_Bolt>()){
+    //         _health -= 60f;
+    //     }
+    // }
 
     private void OnTriggerStay2D(Collider2D other)
     {

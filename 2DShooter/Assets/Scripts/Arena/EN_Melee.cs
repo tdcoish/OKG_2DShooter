@@ -1,10 +1,15 @@
 ﻿/*************************************************************************************
 Zerg rush the player.
+
+Okay update, now they are going to rush towards the player, then they charge when they 
+get close.
 *************************************************************************************/
 using UnityEngine;
 
 public class EN_Melee : EN_Base
 {
+
+    
 
     void Update()
     {
