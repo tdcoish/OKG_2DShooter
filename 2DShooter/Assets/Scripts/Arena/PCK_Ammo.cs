@@ -3,8 +3,10 @@
 *************************************************************************************/
 using UnityEngine;
 
-[RequireComponent(typeof(UT_LifeTime))]
-public class PCK_Health : PCK_Base
+public class PCK_Ammo : PCK_Base
 {
-    
+    protected override void Update()
+    {
+        
+    }
 }
