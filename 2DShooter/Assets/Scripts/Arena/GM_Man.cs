@@ -38,7 +38,12 @@ public class GM_Man : MonoBehaviour
                 Instantiate(PF_HealthPack, _healthSpawnPoints[i].transform.position, transform.rotation);
                 _lastHealthSpawn = Time.time;
             }
-        }    
+        }  
+
+        if(Input.GetKeyDown(KeyCode.Escape))
+        {
+            SceneManager.LoadScene("MainMenu");
+        }  
     }
 
     private void E_PlayerDied()
