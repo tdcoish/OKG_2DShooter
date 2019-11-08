@@ -93,6 +93,9 @@ public class EN_Melee : EN_Base
         if(other.GetComponent<EX_Grenade>()){
             _health = 0f;
         }
+        if(other.GetComponent<EN_Melee>()){
+            _health = 0f;
+        }
     }
 
 }

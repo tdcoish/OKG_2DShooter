@@ -117,7 +117,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _lifeOver: 0
-  _lifespan: 1
+  _lifespan: 5
 --- !u!114 &1989154103
 MonoBehaviour:
   m_ObjectHideFlags: 0

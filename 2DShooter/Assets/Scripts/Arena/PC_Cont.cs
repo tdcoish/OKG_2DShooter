@@ -76,7 +76,7 @@ public class PC_Cont : MonoBehaviour
             }
         }
         if(other.GetComponent<PCK_Ammo>()){
-            cGun._ammo += 20;
+            cGun._ammo += 25;
             if(cGun._ammo > cGun._maxAmmo){
                 cGun._ammo = cGun._maxAmmo;
             }

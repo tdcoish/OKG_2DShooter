@@ -56,7 +56,6 @@ SpriteRenderer:
   m_ProbeAnchor: {fileID: 0}
   m_LightProbeVolumeOverride: {fileID: 0}
   m_ScaleInLightmap: 1
-  m_ReceiveGI: 1
   m_PreserveUVs: 0
   m_IgnoreNormalsForChartDetection: 0
   m_ImportantGI: 0
@@ -137,7 +136,6 @@ SpriteRenderer:
   m_ProbeAnchor: {fileID: 0}
   m_LightProbeVolumeOverride: {fileID: 0}
   m_ScaleInLightmap: 1
-  m_ReceiveGI: 1
   m_PreserveUVs: 0
   m_IgnoreNormalsForChartDetection: 0
   m_ImportantGI: 0
@@ -221,7 +219,6 @@ SpriteRenderer:
   m_ProbeAnchor: {fileID: 0}
   m_LightProbeVolumeOverride: {fileID: 0}
   m_ScaleInLightmap: 1
-  m_ReceiveGI: 1
   m_PreserveUVs: 0
   m_IgnoreNormalsForChartDetection: 0
   m_ImportantGI: 0
@@ -311,6 +308,11 @@ MonoBehaviour:
   PF_Explode: {fileID: 7988837159611502830, guid: 33914ec7e65dc4545ab6104ce540781b,
     type: 3}
   PF_Gibs: {fileID: 5399777002084749434, guid: ce204fee56c1a65468e8a17b3cbe12f7, type: 3}
+  _dropAmmoChance: 10
+  _dropHealthChance: 10
+  PF_AmmoBox: {fileID: 1989154103, guid: 1530d05971734bc43bf73179685d512f, type: 3}
+  PF_HealthBox: {fileID: 6217487067244641993, guid: 3696c17546f549e4b90ba586a459a52c,
+    type: 3}
   PF_Bolt: {fileID: 4701507514455187488, guid: 4c7fb68c542a88c44a7815b081988211, type: 3}
-  _shotInterval: 3
+  _shotInterval: 1
   rFirePoint: {fileID: 249442864}

@@ -5,8 +5,4 @@ using UnityEngine;
 
 public class PCK_Ammo : PCK_Base
 {
-    protected override void Update()
-    {
-        
-    }
 }
