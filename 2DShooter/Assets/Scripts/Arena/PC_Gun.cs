@@ -45,11 +45,16 @@ public class PC_Gun : MonoBehaviour
                     }
 
                     _ammo--;
+                    if(_ammo == 0){
+                        cAudio.FMisFireGun();
+                    }
                 }
             }
         }
         if(Input.GetMouseButtonDown(0)){
-            cAudio.FMisFireGun();
+            if(_ammo <= 0){
+                cAudio.FMisFireGun();
+            }
         }
     }
 
