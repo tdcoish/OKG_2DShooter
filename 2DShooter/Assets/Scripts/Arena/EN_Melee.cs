@@ -3,24 +3,8 @@ Zerg rush the player.
 *************************************************************************************/
 using UnityEngine;
 
-public class EN_Melee : MonoBehaviour
+public class EN_Melee : EN_Base
 {
-    private Rigidbody2D                 cRigid;
-
-    public float                        _spd;
-    PC_Cont                             rPC;
-
-    public float                        _health = 100f;
-
-    public ParticleSystem               PF_HitByBullet;
-    public ParticleSystem               PF_Explode;
-    public GFX_Gibs                     PF_Gibs;
-
-    void Start()
-    {
-        cRigid = GetComponent<Rigidbody2D>();
-        rPC = FindObjectOfType<PC_Cont>();
-    }
 
     void Update()
     {
@@ -47,10 +31,4 @@ public class EN_Melee : MonoBehaviour
         }
     }
 
-    private void KillYourself()
-    {
-        Instantiate(PF_Explode, transform.position, transform.rotation);
-        Instantiate(PF_Gibs, transform.position, transform.rotation);
-        Destroy(gameObject);
-    }
 }
