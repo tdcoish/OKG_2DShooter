@@ -56,6 +56,7 @@ SpriteRenderer:
   m_ProbeAnchor: {fileID: 0}
   m_LightProbeVolumeOverride: {fileID: 0}
   m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
   m_PreserveUVs: 0
   m_IgnoreNormalsForChartDetection: 0
   m_ImportantGI: 0
@@ -108,7 +109,7 @@ Transform:
   m_GameObject: {fileID: 2666419685915496130}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 1.5194991, y: 0.14762527, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 5, y: 5, z: 1}
   m_Children:
   - {fileID: 1408931110}
   m_Father: {fileID: 0}
@@ -139,6 +140,7 @@ SpriteRenderer:
   m_ProbeAnchor: {fileID: 0}
   m_LightProbeVolumeOverride: {fileID: 0}
   m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
   m_PreserveUVs: 0
   m_IgnoreNormalsForChartDetection: 0
   m_ImportantGI: 0
@@ -230,3 +232,4 @@ MonoBehaviour:
   PF_Gibs: {fileID: 5399777002084749434, guid: ce204fee56c1a65468e8a17b3cbe12f7, type: 3}
   PF_Bolt: {fileID: 4701507514455187488, guid: 4c7fb68c542a88c44a7815b081988211, type: 3}
   _shotInterval: 3
+  rFirePoint: {fileID: 0}
