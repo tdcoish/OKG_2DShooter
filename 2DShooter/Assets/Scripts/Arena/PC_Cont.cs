@@ -53,6 +53,8 @@ public class PC_Cont : MonoBehaviour
         if(Input.GetKey(KeyCode.S)){
             vVel.y -= _spd;
         }
+
+        vVel = Vector3.Normalize(vVel) * _spd;
         return vVel;
     }
 
