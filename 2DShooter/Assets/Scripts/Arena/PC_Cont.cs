@@ -29,6 +29,7 @@ public class PC_Cont : MonoBehaviour
         cGrnd.FRun();
         CheckDead();
         rUI.FSetBarSize(_health/100f);
+        rUI.FSetAmmoBarSize(cGun._ammo, cGun._maxAmmo);
     }
 
     private Vector3 HandleInputForVel()
@@ -69,6 +70,12 @@ public class PC_Cont : MonoBehaviour
             _health += 10f;
             if(_health > 100f){
                 _health = 100f;
+            }
+        }
+        if(other.GetComponent<PCK_Ammo>()){
+            cGun._ammo += 20;
+            if(cGun._ammo > cGun._maxAmmo){
+                cGun._ammo = cGun._maxAmmo;
             }
         }
         if(other.GetComponent<EX_Grenade>()){
