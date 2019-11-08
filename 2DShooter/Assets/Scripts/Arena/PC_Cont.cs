@@ -70,7 +70,7 @@ public class PC_Cont : MonoBehaviour
         }
 
         if(other.GetComponent<PCK_Health>()){
-            _health += 10f;
+            _health += 50f;
             if(_health > _maxHealth){
                 _health = _maxHealth;
             }
