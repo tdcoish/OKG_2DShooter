@@ -10,6 +10,8 @@ public class PC_Gun : MonoBehaviour
     private int                             ix;
     public PC_FPoint[]                      rFirePoints;
 
+    public ParticleSystem                   PF_Gunfire;
+
     public float                            _fireRate;
     private float                           _lastFire;
     public PJ_Plasma                        PF_Plasmoid;
@@ -25,6 +27,7 @@ public class PC_Gun : MonoBehaviour
             if(Time.time - _lastFire > _fireRate)
             {
                 PJ_Plasma p = Instantiate(PF_Plasmoid, rFirePoints[ix].transform.position, transform.rotation);
+                Instantiate(PF_Gunfire, rFirePoints[ix].transform.position, transform.rotation);
                 Vector3 vDir = FindObjectOfType<UI_CrossHair>().transform.position - transform.position;
                 p.FFireDirection(vDir);
                 cAudio.FFireGun();
