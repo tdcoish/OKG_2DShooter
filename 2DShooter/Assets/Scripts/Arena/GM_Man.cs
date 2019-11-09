@@ -10,6 +10,8 @@ public class GM_Man : MonoBehaviour
     private EN_Melee                PF_Melee;
     [SerializeField]
     private PCK_Health              PF_HealthPack;
+    [SerializeField]
+    private PCK_Ammo                PF_AmmoPack;
 
     private GM_Score                cScore;
 
@@ -20,6 +22,10 @@ public class GM_Man : MonoBehaviour
     public float                    _healthSpawnRate;
     public float                    _lastHealthSpawn;
     public GM_HP_Spawn[]            _healthSpawnPoints;
+
+    public float                    _ammoSpawnRate;
+    public float                    _lastAmmoSpawn;
+    public GM_AM_Spawn[]            _ammoSpawnPoints;
 
     void Awake()
     {
@@ -49,6 +55,13 @@ public class GM_Man : MonoBehaviour
                 _lastHealthSpawn = Time.time;
             }
         }  
+
+        if(Time.time - _lastAmmoSpawn > _ammoSpawnRate){
+            for(int i=0; i<_ammoSpawnPoints.Length; i++){
+                Instantiate(PF_AmmoPack, _ammoSpawnPoints[i].transform.position, transform.rotation);
+                _lastAmmoSpawn = Time.time;
+            }
+        } 
 
         if(Input.GetKeyDown(KeyCode.Escape))
         {

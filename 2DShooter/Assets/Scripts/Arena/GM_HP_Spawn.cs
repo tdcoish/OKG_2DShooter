@@ -5,13 +5,5 @@ using UnityEngine;
 
 public class GM_HP_Spawn : MonoBehaviour
 {
-    void Start()
-    {
-        
-    }
 
-    void Update()
-    {
-        
-    }
 }
