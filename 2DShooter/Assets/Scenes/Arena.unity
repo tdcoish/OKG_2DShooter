@@ -2815,6 +2815,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: EN_Lava
       objectReference: {fileID: 0}
+    - target: {fileID: 8382864711526243897, guid: 2132becebe616014b9108c757da00752,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 149994326957934977, guid: 2132becebe616014b9108c757da00752,
         type: 3}
       propertyPath: m_LocalPosition.x
