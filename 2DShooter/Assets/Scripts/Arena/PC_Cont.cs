@@ -36,6 +36,7 @@ public class PC_Cont : MonoBehaviour
         rUI.FSetBarSize(_health/_maxHealth);
         rUI.FSetAmmoBarSize(cGun._ammo, cGun._maxAmmo);
         rUI.FSetShieldBarSize(cShields._val, cShields._maxVal);
+        rUI.FSetTimeText(Time.time);
     }
 
     private Vector3 HandleInputForVel()

@@ -94,7 +94,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ac4b43bc8e1a5e94fadc2b9dba21fac7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _spd: 2
+  _spd: 1.5
   _health: 100
   PF_HitByBullet: {fileID: 5325226421071126695, guid: faf126ad3db7b1c4b9c8515f26cb0a9e,
     type: 3}
@@ -107,8 +107,8 @@ MonoBehaviour:
   PF_HealthBox: {fileID: 6217487067244641993, guid: 3696c17546f549e4b90ba586a459a52c,
     type: 3}
   _state: 0
-  _maxChargeDis: 2
-  _chargeSpdBoost: 2
+  _maxChargeDis: 3
+  _chargeSpdBoost: 1.5
   _chargeTime: 1.5
   _recoveryTime: 1
 --- !u!50 &411031447043653680

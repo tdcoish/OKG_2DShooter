@@ -3,7 +3,7 @@
 *************************************************************************************/
 using UnityEngine;
 
-public class GM_HP_Spawn : MonoBehaviour
+public class GM_AM_Spawn : MonoBehaviour
 {
 
 }

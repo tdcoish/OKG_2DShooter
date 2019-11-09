@@ -10,6 +10,7 @@ public class UI_PC : MonoBehaviour
     public Image                            _healthBar;
     public Image                            _shieldBar;
     public Text                             _scoreText;
+    public Text                             _timeText;
 
     public void FSetBarSize(float percZeroToOne)
     {
@@ -31,5 +32,13 @@ public class UI_PC : MonoBehaviour
     public void FSetScoreText(int score)
     {
         _scoreText.text = "SCORE: " + score;
+    }
+
+    public void FSetTimeText(float time)
+    {
+        // convert this to minutes and seconds.
+        int sec = (int)time % 60;
+        int min = (int)time / 60;
+        _timeText.text = min.ToString() + ":" + sec.ToString();
     }
 }
