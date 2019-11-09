@@ -13,8 +13,8 @@ public class AD_PC : MonoBehaviour
 
     void Start()
     {
-        // _adShieldsPanicking.Stop();
-        // _adShieldsRecharging.Stop();
+        _adShieldsPanicking.Stop();
+        _adShieldsRecharging.Stop();
     }
 
     public void FFireGun()
@@ -28,19 +28,19 @@ public class AD_PC : MonoBehaviour
 
     public void FPlayShieldsRecharging(float curVal, float maxVal)
     {
-        // _adShieldsRecharging.Play();
+        _adShieldsRecharging.Play();
     }
     public void FStopPlayShieldsRecharging()
     {
-        // _adShieldsRecharging.Stop();
+        _adShieldsRecharging.Stop();
     }
 
     public void FPlayShieldsPanicking()
     {
-        // _adShieldsPanicking.Play();
+        _adShieldsPanicking.Play();
     }
     public void FStopPlayShieldsPanicking()
     {
-        // _adShieldsPanicking.Stop();
+        _adShieldsPanicking.Stop();
     }
 }
