@@ -56,7 +56,15 @@ public class AI_Pathfind : MonoBehaviour
                 ixStart = i;
             }
         }
-
+        // This is the wrong index.
+        int ixTemp = ixStart;
+        for(int i=0; i<rNodes.Length; i++){
+            if(rNodes[i] == rVisible[ixStart]){
+                ixTemp = i;
+            }
+        }
+        ixStart = ixTemp;
+        
         // ---------------- Run A* and calculate the best path.
         // 1. Assign to every node a tentative distance of infinity, or some huge number, ie. 10000
         for(int i=0; i<rNodes.Length; i++){
@@ -81,16 +89,21 @@ public class AI_Pathfind : MonoBehaviour
                 dis2 = Vector3.Distance(rNodes[ixGoal].transform.position, vDestPos);
             }
         }
+        // Debug.DrawLine(vCurPos, rNodes[ixGoal].transform.position, Color.black, 2f);
 
         // 6. Try to find a path. As soon as we find one, return that.
         bool foundPath = false;
         int ixCur = -1;
+
+        Debug.Log("Starting index: " + ixStart);
+        Debug.DrawLine(vCurPos, rNodes[ixStart].transform.position, Color.red, 2f);
+        Debug.Log("Goal Index: " + ixGoal);
         while(!foundPath)
         {
             // 7. Get the unvisited node with the lowest tentative distance. Make this the current node to work with.
             ixCur = -1;
             ixCur = FindSmallestUnvisitedNode(visited, rNodes);
-            Debug.Log(ixCur);
+            Debug.Log("Current Index: " + ixCur);
 
             // 8. Now that we have the correct node, visit all its neighbours, update their distances if appropriate.
             for(int i=0; i<rNodes[ixCur].rConNodes.Count; ++i)

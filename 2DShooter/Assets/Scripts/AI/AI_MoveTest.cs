@@ -23,15 +23,20 @@ public class AI_MoveTest : MonoBehaviour
 
     void Update()
     {
-        // if(_pathList == null){
-        //     Debug.Log("No path");
-        //     return;
-        // }else{
-        //     for(int i=1; i<_pathList.Count; i++){
-        //         Debug.DrawLine(_pathList[i].transform.position, _pathList[i-1].transform.position);
-        //     }
-        // }
-        // Vector3 vDir = _pathList[0].transform.position - transform.position;
-        // cRigid.velocity = vDir.normalized * _spd;
+        if(_pathList == null){
+            Debug.Log("No path");
+            return;
+        }else{
+            for(int i=1; i<_pathList.Count; i++){
+                Debug.DrawLine(_pathList[i].transform.position, _pathList[i-1].transform.position);
+            }
+            Vector3 vDir = _pathList[0].transform.position - transform.position;
+            cRigid.velocity = Vector3.Normalize(vDir) * _spd;
+
+            if(Vector3.Distance(_pathList[0].transform.position, transform.position) < 0.1f){
+                _pathList.RemoveAt(0);
+                Debug.Log("Removing one");
+            }
+        }
     }
 }
