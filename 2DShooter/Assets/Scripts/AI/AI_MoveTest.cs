@@ -34,13 +34,17 @@ public class AI_MoveTest : MonoBehaviour
         bool usePathing = true;
 
         Vector3 vGoal = rPC.transform.position;
-        Vector2 vDir = transform.position - vGoal;
+        Vector2 vDir = vGoal - transform.position;
         float dis = Vector3.Distance(transform.position, rPC.transform.position);
-        RaycastHit2D hit = Physics2D.Raycast(transform.position, vDir, dis);
+        Debug.DrawLine(transform.position, (transform.position + (Vector3)vDir*dis), Color.cyan);
+        RaycastHit2D hit = Physics2D.Raycast(transform.position, vDir, dis*1.1f);
         if(hit.collider != null){
             if(hit.collider.GetComponent<PC_Cont>())
             {
                 usePathing = false;
+            }else{
+                Debug.Log("Hit something other than the player");
+                Debug.Log(hit.collider);
             }
         }
 
@@ -48,14 +52,22 @@ public class AI_MoveTest : MonoBehaviour
         {
             // here we get a new path.
             _pathList = cPather.FFindPath(transform.position, rPC.transform.position);
+            if(_pathList.Count == 0 || _pathList == null){
+                Debug.Log("No valid path");
+                return;
+            }
+            if(Vector3.Distance(_pathList[0].transform.position, transform.position) < 1f){
+                _pathList.RemoveAt(0);
+            }
+            if(_pathList.Count == 0 || _pathList == null){
+                Debug.Log("No valid path");
+                return;
+            }
             vDir = _pathList[0].transform.position - transform.position;
             cRigid.velocity = Vector3.Normalize(vDir) * _spd;
 
             for(int i=1; i<_pathList.Count; i++){
                 Debug.DrawLine(_pathList[i].transform.position, _pathList[i-1].transform.position);
-            }
-            if(Vector3.Distance(_pathList[0].transform.position, transform.position) < 0.1f){
-                _pathList.RemoveAt(0);
             }
         }else{
             Debug.Log("Can see player");
