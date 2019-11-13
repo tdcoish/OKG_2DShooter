@@ -42,9 +42,6 @@ public class AI_MoveTest : MonoBehaviour
             if(hit.collider.GetComponent<PC_Cont>())
             {
                 usePathing = false;
-            }else{
-                Debug.Log("Hit something other than the player");
-                Debug.Log(hit.collider);
             }
         }
 
@@ -70,7 +67,6 @@ public class AI_MoveTest : MonoBehaviour
                 Debug.DrawLine(_pathList[i].transform.position, _pathList[i-1].transform.position);
             }
         }else{
-            Debug.Log("Can see player");
             vDir = rPC.transform.position - transform.position;
             cRigid.velocity = Vector3.Normalize(vDir) * _spd;            
         }
