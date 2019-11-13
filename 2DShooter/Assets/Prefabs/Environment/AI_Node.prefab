@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 6376256778103281871}
   - component: {fileID: 1907246094489450226}
   - component: {fileID: 1583502664402198032}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: AI_Node
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -94,6 +94,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4346a7f291f34d54c95ddeaa0bf37da6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  rConNodes: []
+  _ixPrevNode: 0
+  _disToStart: 0
+  _disToGoal: 0
 --- !u!61 &1583502664402198032
 BoxCollider2D:
   m_ObjectHideFlags: 0
