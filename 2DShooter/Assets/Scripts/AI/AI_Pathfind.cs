@@ -33,7 +33,6 @@ public class AI_Pathfind : MonoBehaviour
                 if(hit.collider.gameObject == rNodes[i].gameObject)
                 {
                     Debug.DrawLine(vCurPos, rNodes[i].transform.position);
-                    Debug.DrawLine(rNodes[i].transform.position, vDestPos, Color.green);    
                     rVisible.Add(rNodes[i]);
                 }
             }
@@ -42,19 +41,35 @@ public class AI_Pathfind : MonoBehaviour
             Debug.Log("ERROR. No nodes visible.");
             return null;
         }
-        
+
         // ------------------ Figure out which node is going to be the goal.
+        // the nodes need to be visible from wherever the goal destination is.
         // For now just use closest. That's not always perfect, but it's good enough.
-        int ixGoal = 0;
-        float dis = Vector3.Distance(rNodes[0].transform.position, vDestPos);
+        int ixGoal = -1;
+        float dis = 1000000f;
         for(int i=1; i<rNodes.Length; i++)
         {
-            float fDis = Vector3.Distance(rNodes[i].transform.position, vDestPos);
-            if(fDis < dis){
-                dis = fDis;
-                ixGoal = i;
+            Vector2 vDir = vDestPos - rNodes[i].transform.position;
+            float tempDis = Vector3.Distance(rNodes[i].transform.position, vDestPos);
+            LayerMask mask = LayerMask.GetMask("Level Geometry");
+            RaycastHit2D hit = Physics2D.Raycast(rNodes[i].transform.position, vDir, tempDis, mask);
+            // We shouldn't hit anything. If we do, that's a problem.
+            if(hit.collider == null){
+                if(tempDis < dis)
+                {
+                    dis = tempDis;
+                    ixGoal = i;
+                }
+            }else{
+                Debug.Log(hit.collider);
             }
         }
+        if(ixGoal < 0){
+            Debug.Log("No suitable goal index was found");
+            return null;
+        }
+        Debug.DrawLine(vCurPos, rNodes[ixGoal].transform.position, Color.green);
+        
 
         // ------------------ Store the distance to the goal for all nodes.
         for(int i=0; i<rNodes.Length; i++)

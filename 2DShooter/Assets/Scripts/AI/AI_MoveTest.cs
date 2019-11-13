@@ -52,8 +52,12 @@ public class AI_MoveTest : MonoBehaviour
         {
             // here we get a new path.
             _pathList = cPather.FFindPath(transform.position, rPC.transform.position);
-            if(_pathList.Count == 0 || _pathList == null){
+            if(_pathList == null){
                 Debug.Log("No valid path");
+                return;
+            }
+            if(_pathList.Count == 0 || _pathList == null){
+                Debug.Log("No nodes on that path");
                 return;
             }
             if(Vector3.Distance(_pathList[0].transform.position, transform.position) < 1f){
