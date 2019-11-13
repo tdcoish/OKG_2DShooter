@@ -952,7 +952,7 @@ GameObject:
   - component: {fileID: 281831958}
   - component: {fileID: 281831960}
   - component: {fileID: 281831959}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: FirePoint (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1817,7 +1817,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3fd3ca405ae2a2a48bd12f678f32bcab, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _spd: 3
+  _spd: 4
   rPC: {fileID: 1508779770}
 --- !u!114 &457512177
 MonoBehaviour:
@@ -3780,7 +3780,7 @@ GameObject:
   - component: {fileID: 1013286506}
   - component: {fileID: 1013286505}
   - component: {fileID: 1013286504}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: AD_Player
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4274,7 +4274,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1117566303}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: AI_PathfindingNodes
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5042,7 +5042,7 @@ GameObject:
   - component: {fileID: 1327544492}
   - component: {fileID: 1327544494}
   - component: {fileID: 1327544493}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: FirePoint
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5798,7 +5798,7 @@ GameObject:
   - component: {fileID: 1508779773}
   - component: {fileID: 1508779772}
   - component: {fileID: 1508779771}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: PC
   m_TagString: Untagged
   m_Icon: {fileID: 0}
