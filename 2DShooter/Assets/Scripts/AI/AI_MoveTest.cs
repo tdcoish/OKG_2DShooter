@@ -60,7 +60,7 @@ public class AI_MoveTest : MonoBehaviour
                 Debug.Log("No nodes on that path");
                 return;
             }
-            if(Vector3.Distance(_pathList[0].transform.position, transform.position) < 1f){
+            if(Vector3.Distance(_pathList[0].transform.position, transform.position) < 2f){
                 _pathList.RemoveAt(0);
             }
             if(_pathList.Count == 0 || _pathList == null){
