@@ -1,6 +1,12 @@
 ﻿/************************************************************
 Alrighty. What we're going to need is a list of all the AI_Node
 entities, as well as all the 
+
+Alright. Ultimately, we are going to need to raycast to all the 
+potential nodes, and then see which path is the shortest.
+
+It's an extra step of complexity, but it gives better results than
+the other way.
 ************************************************************/
 using UnityEngine;
 using System.Collections.Generic;
@@ -18,22 +24,14 @@ public class AI_Pathfind : MonoBehaviour
     **************************************************************************** */
     public List<AI_Node> FFindPath(Vector3 vCurPos, Vector3 vDestPos)
     {
-        // ------------------ Store the distance to the goal for all nodes.
-        for(int i=0; i<rNodes.Length; i++)
-        {
-            rNodes[i]._disToGoal = Vector3.Distance(rNodes[i].transform.position, vDestPos);
-        }
-
-        // ------------------ Select the starting nodes from some candidates.
+        // ----------------- Make a list of visible nodes
         List<AI_Node> rVisible = new List<AI_Node>();
-
         for(int i=0; i<rNodes.Length; i++){
             Vector2 vDir = rNodes[i].transform.position - vCurPos;
             RaycastHit2D hit = Physics2D.Raycast(vCurPos, vDir);
             if(hit.collider != null){
                 if(hit.collider.gameObject == rNodes[i].gameObject)
                 {
-                    Debug.Log("Yeah we can see the node: " + i);
                     Debug.DrawLine(vCurPos, rNodes[i].transform.position);
                     Debug.DrawLine(rNodes[i].transform.position, vDestPos, Color.green);    
                     rVisible.Add(rNodes[i]);
@@ -44,28 +42,56 @@ public class AI_Pathfind : MonoBehaviour
             Debug.Log("ERROR. No nodes visible.");
             return null;
         }
-
-        // Technically I should be doing distance calculations to everything in here.
-        // figure out which one is closest to the goal.
-        // But fuck it, just pick the one that's closest to the goal
-        int ixStart = 0;
-        float disToGoal = rVisible[ixStart]._disToGoal;
-        for(int i=1; i<rVisible.Count; i++){
-            if(rVisible[i]._disToGoal < disToGoal){
-                disToGoal = rVisible[i]._disToGoal;
-                ixStart = i;
-            }
-        }
-        // This is the wrong index.
-        int ixTemp = ixStart;
-        for(int i=0; i<rNodes.Length; i++){
-            if(rNodes[i] == rVisible[ixStart]){
-                ixTemp = i;
-            }
-        }
-        ixStart = ixTemp;
         
-        // ---------------- Run A* and calculate the best path.
+        // ------------------ Figure out which node is going to be the goal.
+        // For now just use closest. That's not always perfect, but it's good enough.
+        int ixGoal = 0;
+        float dis = Vector3.Distance(rNodes[0].transform.position, vDestPos);
+        for(int i=1; i<rNodes.Length; i++)
+        {
+            float fDis = Vector3.Distance(rNodes[i].transform.position, vDestPos);
+            if(fDis < dis){
+                dis = fDis;
+                ixGoal = i;
+            }
+        }
+
+        // ------------------ Store the distance to the goal for all nodes.
+        for(int i=0; i<rNodes.Length; i++)
+        {
+            rNodes[i]._disToGoal = Vector3.Distance(rNodes[i].transform.position, rNodes[ixGoal].transform.position);
+        }
+        
+
+        // ----------------- For each visible node, calculate a path starting from there.
+        List<AI_Node> path = new List<AI_Node>();
+        List<AI_Node> temp = new List<AI_Node>();
+        dis = 100000f;
+        for(int i=0; i<rVisible.Count; i++)
+        {
+            for(int j=0; j<rNodes.Length; j++)
+            {
+                if(rNodes[j] == rVisible[i])
+                {
+                    temp = CalcPathFromNodes(vCurPos, j, ixGoal);
+                    if(temp == null){
+                        Debug.Log("Null list");
+                        continue;
+                    }
+                    if(temp[temp.Count-1]._disToStart < dis){
+                        path = temp;
+                        dis = temp[temp.Count-1]._disToStart;
+                    }
+                }
+            }
+        }
+
+        return path;
+    }
+
+    private List<AI_Node> CalcPathFromNodes(Vector3 vCurPos, int ixStart, int ixGoal)
+    {
+                // ---------------- Run A* and calculate the best path.
         // 1. Assign to every node a tentative distance of infinity, or some huge number, ie. 10000
         for(int i=0; i<rNodes.Length; i++){
             rNodes[i]._disToStart = 100000f;
@@ -80,30 +106,16 @@ public class AI_Pathfind : MonoBehaviour
         // 4. Just a debugging thing, if we hit a -1 node, there is no correct path.
         for(int i=0; i<rNodes.Length; i++) rNodes[i]._ixPrevNode = -1;
 
-        // 5. Calculate our goal node.
-        int ixGoal = 0;
-        float dis2 = Vector3.Distance(rNodes[0].transform.position, vDestPos);
-        for(int i=0; i<rNodes.Length; i++){
-            if(Vector3.Distance(rNodes[i].transform.position, vDestPos) < dis2){
-                ixGoal = i;
-                dis2 = Vector3.Distance(rNodes[ixGoal].transform.position, vDestPos);
-            }
-        }
-        // Debug.DrawLine(vCurPos, rNodes[ixGoal].transform.position, Color.black, 2f);
-
         // 6. Try to find a path. As soon as we find one, return that.
         bool foundPath = false;
         int ixCur = -1;
 
-        Debug.Log("Starting index: " + ixStart);
-        Debug.DrawLine(vCurPos, rNodes[ixStart].transform.position, Color.red, 2f);
-        Debug.Log("Goal Index: " + ixGoal);
+        Debug.DrawLine(vCurPos, rNodes[ixStart].transform.position, Color.magenta);
         while(!foundPath)
         {
             // 7. Get the unvisited node with the lowest tentative distance. Make this the current node to work with.
             ixCur = -1;
             ixCur = FindSmallestUnvisitedNode(visited, rNodes);
-            Debug.Log("Current Index: " + ixCur);
 
             // 8. Now that we have the correct node, visit all its neighbours, update their distances if appropriate.
             for(int i=0; i<rNodes[ixCur].rConNodes.Count; ++i)
