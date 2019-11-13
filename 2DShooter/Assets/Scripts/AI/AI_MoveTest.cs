@@ -37,11 +37,14 @@ public class AI_MoveTest : MonoBehaviour
         Vector2 vDir = vGoal - transform.position;
         float dis = Vector3.Distance(transform.position, rPC.transform.position);
         Debug.DrawLine(transform.position, (transform.position + (Vector3)vDir*dis), Color.cyan);
-        RaycastHit2D hit = Physics2D.Raycast(transform.position, vDir, dis*1.1f);
+        LayerMask mask = LayerMask.GetMask("PC", "Level Geometry");
+        RaycastHit2D hit = Physics2D.Raycast(transform.position, vDir, dis*1.1f, mask);
         if(hit.collider != null){
             if(hit.collider.GetComponent<PC_Cont>())
             {
                 usePathing = false;
+            }else{
+                Debug.Log(hit.collider);
             }
         }
 

@@ -238,7 +238,7 @@ GameObject:
   - component: {fileID: 3399445}
   - component: {fileID: 3399444}
   - component: {fileID: 3399443}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: PC
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2037,7 +2037,7 @@ PrefabInstance:
     - target: {fileID: 2487496792064627892, guid: 7990bca1d301a2c49945aa05cf5296bf,
         type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3526689732253138492, guid: 7990bca1d301a2c49945aa05cf5296bf,
         type: 3}
@@ -3708,7 +3708,7 @@ GameObject:
   - component: {fileID: 947237951}
   - component: {fileID: 947237950}
   - component: {fileID: 947237949}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: FirePoint
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -6446,7 +6446,7 @@ GameObject:
   - component: {fileID: 1607668228}
   - component: {fileID: 1607668227}
   - component: {fileID: 1607668226}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: AD_Player
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -7526,7 +7526,7 @@ GameObject:
   - component: {fileID: 1880534522}
   - component: {fileID: 1880534521}
   - component: {fileID: 1880534520}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: FirePoint (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -7987,11 +7987,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: ENV_Wall
-      objectReference: {fileID: 0}
-    - target: {fileID: 6288666520674297766, guid: 500f1f5e8aee0794ead4c58cd8f11353,
-        type: 3}
-      propertyPath: m_Layer
-      value: 9
       objectReference: {fileID: 0}
     - target: {fileID: 6288666520674297764, guid: 500f1f5e8aee0794ead4c58cd8f11353,
         type: 3}
