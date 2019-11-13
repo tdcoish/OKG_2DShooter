@@ -2739,7 +2739,7 @@ PrefabInstance:
     - target: {fileID: 1907246094489450226, guid: 3944cf71c44563549b68da458569d5a9,
         type: 3}
       propertyPath: rConNodes.Array.size
-      value: 2
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 1907246094489450226, guid: 3944cf71c44563549b68da458569d5a9,
         type: 3}
@@ -2751,6 +2751,11 @@ PrefabInstance:
       propertyPath: rConNodes.Array.data[1]
       value: 
       objectReference: {fileID: 1636294854}
+    - target: {fileID: 1907246094489450226, guid: 3944cf71c44563549b68da458569d5a9,
+        type: 3}
+      propertyPath: rConNodes.Array.data[2]
+      value: 
+      objectReference: {fileID: 1096557225}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3944cf71c44563549b68da458569d5a9, type: 3}
 --- !u!114 &722882121 stripped
@@ -3967,7 +3972,7 @@ PrefabInstance:
     - target: {fileID: 1907246094489450226, guid: 3944cf71c44563549b68da458569d5a9,
         type: 3}
       propertyPath: rConNodes.Array.size
-      value: 2
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 1907246094489450226, guid: 3944cf71c44563549b68da458569d5a9,
         type: 3}
@@ -3979,6 +3984,11 @@ PrefabInstance:
       propertyPath: rConNodes.Array.data[1]
       value: 
       objectReference: {fileID: 1235044284}
+    - target: {fileID: 1907246094489450226, guid: 3944cf71c44563549b68da458569d5a9,
+        type: 3}
+      propertyPath: rConNodes.Array.data[2]
+      value: 
+      objectReference: {fileID: 722882121}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3944cf71c44563549b68da458569d5a9, type: 3}
 --- !u!114 &1096557225 stripped
