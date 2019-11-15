@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 2270897172381191809}
   - component: {fileID: 7605535498707101999}
   - component: {fileID: 1732547003}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: PJ_Plasmoid
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -81,6 +81,7 @@ SpriteRenderer:
   m_ProbeAnchor: {fileID: 0}
   m_LightProbeVolumeOverride: {fileID: 0}
   m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
   m_PreserveUVs: 0
   m_IgnoreNormalsForChartDetection: 0
   m_ImportantGI: 0
@@ -117,6 +118,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _spd: 10
+  PF_WallHit: {fileID: 7097065415117720793, guid: 5d2a2254033a11b46aabac8abde49860,
+    type: 3}
 --- !u!61 &7605535498707101999
 BoxCollider2D:
   m_ObjectHideFlags: 0

@@ -5,6 +5,7 @@ using UnityEngine;
 
 public class PJ_Plasma : PJ_Base
 {
+    public ParticleSystem                           PF_WallHit;
 
     void Update()
     {
@@ -17,6 +18,11 @@ public class PJ_Plasma : PJ_Base
     {
         if(other.GetComponent<EN_Melee>())
         {
+            Destroy(gameObject);
+        }
+        if(other.GetComponent<ENV_Wall>())
+        {
+            Instantiate(PF_WallHit, transform.position, transform.rotation);
             Destroy(gameObject);
         }
     }

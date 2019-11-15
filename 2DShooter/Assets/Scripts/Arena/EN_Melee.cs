@@ -53,11 +53,9 @@ public class EN_Melee : EN_Base
         bool canSeePC = cSeePC.FCanSeePlayer(rPC.transform.position);
         if(!canSeePC)
         {
-            Debug.Log("Can't see him");
             _pathList = cPath.FFindPath(transform.position, rPC.transform.position);
             if(_pathList == null || _pathList.Count == 0)
             {
-                Debug.Log("No nodes or null path");
                 return;
             }
 
@@ -70,7 +68,6 @@ public class EN_Melee : EN_Base
         }
         else
         {
-            Debug.Log("Straight shooting");
             Vector2 vDif = rPC.transform.position - transform.position;
             vDif = Vector3.Normalize(vDif);
             cRigid.velocity = vDif * _spd;
