@@ -2,10 +2,18 @@
 
 *************************************************************************************/
 using UnityEngine;
+using System.Collections.Generic;
 
+[RequireComponent(typeof(AI_Pathfind))]
+[RequireComponent(typeof(AI_SeePC))]
 public class EN_Base : MonoBehaviour
 {
     protected Rigidbody2D               cRigid;
+    protected AI_Pathfind               cPath;
+    protected AI_SeePC                  cSeePC;
+
+    protected List<AI_Node>             _pathList;
+
 
     public float                        _spd;
     protected PC_Cont                   rPC;
@@ -25,6 +33,8 @@ public class EN_Base : MonoBehaviour
     protected void Start()
     {
         cRigid = GetComponent<Rigidbody2D>();
+        cPath = GetComponent<AI_Pathfind>();
+        cSeePC = GetComponent<AI_SeePC>();
         rPC = FindObjectOfType<PC_Cont>();
     }
 

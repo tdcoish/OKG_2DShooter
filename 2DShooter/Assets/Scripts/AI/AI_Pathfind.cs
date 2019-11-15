@@ -28,13 +28,16 @@ public class AI_Pathfind : MonoBehaviour
         List<AI_Node> rVisible = new List<AI_Node>();
         for(int i=0; i<rNodes.Length; i++){
             Vector2 vDir = rNodes[i].transform.position - vCurPos;
-            RaycastHit2D hit = Physics2D.Raycast(vCurPos, vDir);
+            LayerMask mask = LayerMask.GetMask("Level Geometry", "AI Nodes");
+            RaycastHit2D hit = Physics2D.Raycast(vCurPos, vDir.normalized, vDir.magnitude, mask);
             if(hit.collider != null){
                 if(hit.collider.gameObject == rNodes[i].gameObject)
                 {
                     Debug.DrawLine(vCurPos, rNodes[i].transform.position);
                     rVisible.Add(rNodes[i]);
                 }
+
+                // Debug.Log(hit.collider);
             }
         }        
         if(rVisible.Count == 0){
@@ -60,8 +63,6 @@ public class AI_Pathfind : MonoBehaviour
                     dis = tempDis;
                     ixGoal = i;
                 }
-            }else{
-                Debug.Log(hit.collider);
             }
         }
         if(ixGoal < 0){
@@ -98,6 +99,16 @@ public class AI_Pathfind : MonoBehaviour
                         dis = temp[temp.Count-1]._disToStart;
                     }
                 }
+            }
+        }
+
+        // as long as we can see the next node, remove the current node.
+        while(true)
+        {
+            if(path.Count > 1 && CanSeeNode(path[1].transform.position, transform.position)){
+                path.RemoveAt(0);
+            }else{
+                break;
             }
         }
 
@@ -175,6 +186,22 @@ public class AI_Pathfind : MonoBehaviour
         // since we went goal -> intermediates -> start, we need to flip the order of everything around.
         path.Reverse();
         return path;
+    }
+
+    private bool CanSeeNode(Vector3 vNodePos, Vector3 vCurPos)
+    {
+        // ah, go backwards from the node, that way we can ignore other nodes.
+        Vector2 vDir = vCurPos - vNodePos;
+        LayerMask mask = LayerMask.GetMask("Level Geometry", "Default");
+        RaycastHit2D hit = Physics2D.Raycast(vNodePos, vDir.normalized, vDir.magnitude, mask);
+        if(hit.collider != null){
+            if(hit.collider.transform.position == vCurPos)
+            {
+                return true;
+            }
+        }
+
+        return false;
     }
 
     private int FindSmallestUnvisitedNode(bool[] visitedIndexes, AI_Node[] nodes)
