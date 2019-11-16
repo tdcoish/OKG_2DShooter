@@ -17,4 +17,10 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Death.unity
     guid: 9b9a36b9883eefb4287a0a99d9141051
+  - enabled: 1
+    path: Assets/Scenes/WaveTextTest.unity
+    guid: 1d2dd567bff212f4c99343a5fd5f87fd
+  - enabled: 1
+    path: Assets/Scenes/WaveSystemTest.unity
+    guid: aaa682f7ca88bf24f88ea3ce6ae4a5aa
   m_configObjects: {}

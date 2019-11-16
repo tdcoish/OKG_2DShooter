@@ -104,6 +104,9 @@ public class PC_Cont : MonoBehaviour
         if(other.gameObject.GetComponent<ENV_Border>()){
             cRigid.velocity = Vector3.zero;
         }
+        if(other.gameObject.GetComponent<EX_Grenade>()){
+            _health -= cShields.FTakeDamageGiveRemainder(50f);
+        }
     }
 
     private void OnTriggerStay2D(Collider2D other)

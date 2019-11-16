@@ -3,6 +3,7 @@ The text for the title cards/in between waves.
 ************************************************************/
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class UI_SplashText : MonoBehaviour
 {
@@ -23,7 +24,7 @@ public class UI_SplashText : MonoBehaviour
 
     void Start()
     {
-        _state = STATE.S_INTRO;
+        ENTER_Intro();
     }
 
     void Update()
@@ -38,6 +39,7 @@ public class UI_SplashText : MonoBehaviour
 
     private void ENTER_Intro()
     {
+        _state = STATE.S_INTRO;
         _stateChangeTime = Time.time;
         Color c = _txt.color;
         c.a = 0f;
@@ -85,6 +87,7 @@ public class UI_SplashText : MonoBehaviour
 
         if(perc <= 0f){
             Debug.Log("Should be finished");
+            SceneManager.LoadScene("WaveSystemTest");
         }
     }
 }
