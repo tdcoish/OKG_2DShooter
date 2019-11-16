@@ -13,15 +13,25 @@ public class LVL_Man : MonoBehaviour
     public int                                      _numWaves;
     private int                                     _ixWave;
 
-    
-
     void Start()
     {
-        
+        _lastSpawnTime = _spawnInterval * -1;
     }
 
     void Update()
     {
-        
+        if(_ixWave >= _numWaves)
+        {
+            return;
+        }
+        if(Time.time - _lastSpawnTime > _spawnInterval)
+        {
+            for(int i=0; i<rSpawners.Length; i++)
+            {
+                Instantiate(PF_Melee, rSpawners[i].transform.position, rSpawners[i].transform.rotation);
+            }
+            _lastSpawnTime = Time.time;
+            _ixWave++;
+        }
     }
 }

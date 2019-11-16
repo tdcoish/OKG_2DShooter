@@ -41,7 +41,6 @@ public class AI_Pathfind : MonoBehaviour
             }
         }        
         if(rVisible.Count == 0){
-            Debug.Log("ERROR. No nodes visible.");
             return null;
         }
 
