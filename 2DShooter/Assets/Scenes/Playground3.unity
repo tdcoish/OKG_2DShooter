@@ -1399,11 +1399,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: PJ_Plasmoid
       objectReference: {fileID: 0}
-    - target: {fileID: 2270897172381191810, guid: 100849f6bb93b784c99fc9a7ecb5143d,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 2270897172381191815, guid: 100849f6bb93b784c99fc9a7ecb5143d,
         type: 3}
       propertyPath: m_LocalPosition.x
