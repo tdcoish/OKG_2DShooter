@@ -1101,11 +1101,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: EN_Melee
       objectReference: {fileID: 0}
-    - target: {fileID: 8052434471284094179, guid: 7fa9be658e29758479bd9d6b3b7102a8,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 3872752052611134824, guid: 7fa9be658e29758479bd9d6b3b7102a8,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -4673,8 +4668,6 @@ MonoBehaviour:
   _state: 0
   rSpawners: []
   PF_Melee: {fileID: 331203084848263746, guid: 7fa9be658e29758479bd9d6b3b7102a8, type: 3}
-  _numSpawned: 0
-  _numKilled: 0
   _spawnInterval: 5
   _numWaves: 2
 --- !u!4 &1124452070
