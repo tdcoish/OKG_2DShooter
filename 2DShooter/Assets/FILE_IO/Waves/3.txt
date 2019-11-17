@@ -1,6 +1,6 @@
 ID
-1
+3
 Num Waves
-1
+3
 Num Enemies
 4

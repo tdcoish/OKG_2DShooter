@@ -28,16 +28,23 @@ public class LVL_Man : MonoBehaviour
     {
         TDC_EventManager.FRemoveAllHandlers();
 
-        DT_Wave w = new DT_Wave(1, 14, 55);
+        DT_Wave w = new DT_Wave(1, 1, 4);
         IO_Wave.FSaveWave(w);
-        w = IO_Wave.FLoadWave(1.ToString());
-        w._id = 4;
-        IO_Wave.FSaveWave(w);
+        // w = IO_Wave.FLoadWave(1.ToString());
+        for(int i=2; i<5; i++){
+            w._id = i;
+            w._numWaves = i;
+            IO_Wave.FSaveWave(w);
+        }
     }
 
     void Start()
     {
         TDC_EventManager.FAddHandler(TDC_GE.GE_EDeath, E_EnemyDied);
+
+        DT_Wave w = IO_Wave.FLoadWave(IO_Prog._curLevel.ToString());
+        _numWaves = w._numWaves;
+
         _state = STATE.S_Spawning;
         rSpawners = FindObjectsOfType<LVL_Spawner>();
         _lastSpawnTime = _spawnInterval * -1;
@@ -66,6 +73,7 @@ public class LVL_Man : MonoBehaviour
         {
             if(_numKilled == _numSpawned){
                 Debug.Log("You win");
+                IO_Prog._curLevel++;
                 SceneManager.LoadScene("WaveTextTest");
             }
         }
