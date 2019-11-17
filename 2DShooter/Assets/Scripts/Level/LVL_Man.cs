@@ -27,6 +27,12 @@ public class LVL_Man : MonoBehaviour
     void Awake()
     {
         TDC_EventManager.FRemoveAllHandlers();
+
+        DT_Wave w = new DT_Wave(1, 14, 55);
+        IO_Wave.FSaveWave(w);
+        w = IO_Wave.FLoadWave(1.ToString());
+        w._id = 4;
+        IO_Wave.FSaveWave(w);
     }
 
     void Start()
