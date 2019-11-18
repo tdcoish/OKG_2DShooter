@@ -6,4 +6,5 @@ using UnityEngine;
 public static class IO_Prog
 {
     public static int                                       _curLevel = 1;
+    public static int                                       _numLevels;
 }

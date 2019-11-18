@@ -43,6 +43,7 @@ public class LVL_Man : MonoBehaviour
         TDC_EventManager.FAddHandler(TDC_GE.GE_EDeath, E_EnemyDied);
 
         DT_Wave w = IO_Wave.FLoadWave(IO_Prog._curLevel.ToString());
+        IO_Prog._numLevels = 2;
         _numWaves = w._numWaves;
 
         _state = STATE.S_Spawning;
@@ -74,7 +75,11 @@ public class LVL_Man : MonoBehaviour
             if(_numKilled == _numSpawned){
                 Debug.Log("You win");
                 IO_Prog._curLevel++;
-                SceneManager.LoadScene("WaveTextTest");
+                if(IO_Prog._curLevel > IO_Prog._numLevels){
+                    SceneManager.LoadScene("Won");
+                }else{
+                    SceneManager.LoadScene("WaveTextTest");
+                }
             }
         }
     }

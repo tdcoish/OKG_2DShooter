@@ -23,4 +23,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/WaveSystemTest.unity
     guid: aaa682f7ca88bf24f88ea3ce6ae4a5aa
+  - enabled: 1
+    path: Assets/Scenes/Won.unity
+    guid: 384714139a0cffd439bd11cb03808012
   m_configObjects: {}
