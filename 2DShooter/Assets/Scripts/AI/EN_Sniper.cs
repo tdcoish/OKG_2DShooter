@@ -96,14 +96,13 @@ public class EN_Sniper : EN_Base
         // Now we have shoot out three projectiles in a semi-tight burst.
         if(Time.time - _stateChangeTime > _chargeInterval){
             Vector3 vDir = Vector3.Normalize(rPC.transform.position - transform.position);
-            Vector3 vLeft = Vector3.Cross(vDir, Vector3.up);
-            Debug.DrawRay(transform.position, vLeft, Color.cyan, 1f);
+            Vector3 vRight = Vector3.Cross(vDir, Vector3.forward);
             PJ_Snipe s1 = Instantiate(PF_SnipeShot, transform.position, transform.rotation);
-            s1.FFireDirection(Vector3.Normalize(vDir + 0.2f*vLeft));
+            s1.FFireDirection(Vector3.Normalize(vDir + 0.2f*vRight));
             PJ_Snipe s2 = Instantiate(PF_SnipeShot, transform.position, transform.rotation);
             s2.FFireDirection(Vector3.Normalize(vDir));
             PJ_Snipe s3 = Instantiate(PF_SnipeShot, transform.position, transform.rotation);
-            s1.FFireDirection(Vector3.Normalize(vDir + -0.2f*vLeft));
+            s3.FFireDirection(Vector3.Normalize(vDir - 0.2f*vRight));
             EXIT_Charging();
             ENTER_Recovering();
         }
