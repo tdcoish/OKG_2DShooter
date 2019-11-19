@@ -52,27 +52,16 @@ public class EN_Sniper : EN_Base
     }
     private void RUN_Tracking()
     {
+        Vector3 vDir = Vector3.Normalize(rPC.transform.position - transform.position);
+        cRigid.velocity = vDir * _spd;
+
         // if they can see the player, then just move to him. If not, you gotta use pathfinding.
         bool canSeePC = cSeePC.FCanSeePlayer(rPC.transform.position);
-        if(!canSeePC)
-        {
-            _pathList = cPath.FFindPath(transform.position, rPC.transform.position);
-            if(_pathList == null || _pathList.Count == 0)
-            {
-                return;
-            }
-
-            Vector3 vDir = _pathList[0].transform.position - transform.position;
-            cRigid.velocity = Vector3.Normalize(vDir) * _spd;
-
-            for(int i=1; i<_pathList.Count; i++){
-                Debug.DrawLine(_pathList[i].transform.position, _pathList[i-1].transform.position);
-            }
-        }
-        else
-        {
+        float fDisToPlayer = Vector3.Distance(rPC.transform.position, transform.position);
+        if(fDisToPlayer < _visionDistance && canSeePC){
             ENTER_Charging();
         }
+        
     }
     private void ENTER_Charging(){
         cRigid.velocity = Vector3.zero;

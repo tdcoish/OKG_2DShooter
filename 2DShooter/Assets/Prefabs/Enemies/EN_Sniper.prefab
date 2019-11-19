@@ -227,7 +227,7 @@ Rigidbody2D:
   m_UseAutoMass: 0
   m_Mass: 1
   m_LinearDrag: 0
-  m_AngularDrag: 0.05
+  m_AngularDrag: 1
   m_GravityScale: 0
   m_Material: {fileID: 0}
   m_Interpolate: 0
@@ -308,6 +308,7 @@ MonoBehaviour:
   PF_AmmoBox: {fileID: 1989154103, guid: 1530d05971734bc43bf73179685d512f, type: 3}
   PF_HealthBox: {fileID: 6217487067244641993, guid: 3696c17546f549e4b90ba586a459a52c,
     type: 3}
+  _visionDistance: 50
   _state: 0
   _laser: {fileID: 413778763}
   _chargeInterval: 2
