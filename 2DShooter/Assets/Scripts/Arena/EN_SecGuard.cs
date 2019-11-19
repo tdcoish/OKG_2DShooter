@@ -41,6 +41,10 @@ public class EN_SecGuard : EN_Base
             case STATE.S_Firing: RUN_Firing(); break;
             case STATE.S_Recovering: RUN_Recovering(); break;
         }
+
+        if(_health <= 0f){
+            KillYourself();
+        }
     }
 
     private void ENTER_Tracking(){
@@ -127,8 +131,8 @@ public class EN_SecGuard : EN_Base
         if(other.GetComponent<EX_Grenade>()){
             _health = 0f;
         }
-        if(other.GetComponent<EN_Melee>()){
-            _health = 0f;
-        }
+        // if(other.GetComponent<EN_Melee>()){
+        //     _health = 0f;
+        // }
     }
 }
