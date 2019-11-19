@@ -41,6 +41,10 @@ public class EN_Sniper : EN_Base
             case STATE.S_Charging: RUN_Charging(); break;
             case STATE.S_Recovering: RUN_Recovering(); break;
         }
+
+        if(_health <= 0f){
+            KillYourself();
+        }
     }
 
     private void ENTER_Tracking(){
@@ -108,5 +112,22 @@ public class EN_Sniper : EN_Base
         if(Time.time - _stateChangeTime > _recoverInterval){
             ENTER_Tracking();
         }
+    }
+
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+        if(other.GetComponent<PJ_Plasma>()){
+            _health -= 50f;
+            Instantiate(PF_HitByBullet, transform.position, transform.rotation);
+        }
+        if(other.GetComponent<PC_Cont>()){
+            _health = 0f;
+        }
+        if(other.GetComponent<EX_Grenade>()){
+            _health = 0f;
+        }
+        // if(other.GetComponent<EN_Melee>()){
+        //     _health = 0f;
+        // }
     }
 }
