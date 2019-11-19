@@ -6,6 +6,8 @@ using UnityEngine;
 public class PJ_Bolt : PJ_Base
 {
 
+    public ParticleSystem                               PF_DeathParticles;
+
     void Update()
     {
         // make him rotate to the direction he is moving.
@@ -20,14 +22,24 @@ public class PJ_Bolt : PJ_Base
         }
     }
 
+    private void KillYourself()
+    {
+        Instantiate(PF_DeathParticles, transform.position, transform.rotation);
+        Destroy(gameObject);
+    }
+
     private void OnTriggerEnter2D(Collider2D other)
     {
         // if(other.GetComponent<EN_Melee>()){
         //     Destroy(gameObject);
         // }
 
+        if(other.GetComponent<ENV_Wall>()){
+            KillYourself();
+        }
+
         if(other.GetComponent<PC_Cont>()){
-            Destroy(gameObject);
+            KillYourself();
         }
     }
 }

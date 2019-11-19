@@ -114,6 +114,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _spd: 4
+  PF_DeathParticles: {fileID: 7097065415117720793, guid: 5d2a2254033a11b46aabac8abde49860,
+    type: 3}
 --- !u!114 &398391691
 MonoBehaviour:
   m_ObjectHideFlags: 0
