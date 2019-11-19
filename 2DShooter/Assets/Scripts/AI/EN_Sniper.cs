@@ -13,6 +13,7 @@ using UnityEngine;
 
 public class EN_Sniper : EN_Base
 {
+    private AD_Sniper                          cAud;
 
     public enum STATE
     {
@@ -39,6 +40,7 @@ public class EN_Sniper : EN_Base
     void Start()
     {
         base.Start();
+        cAud = GetComponentInChildren<AD_Sniper>();
         _laser.enabled = false;
         _lastIdleMoveTime = _idleMoveInterval*-1f;
     }
@@ -112,6 +114,8 @@ public class EN_Sniper : EN_Base
             s2.FFireDirection(Vector3.Normalize(vDir));
             PJ_Snipe s3 = Instantiate(PF_SnipeShot, transform.position, transform.rotation);
             s3.FFireDirection(Vector3.Normalize(vDir - 0.2f*vRight));
+            cAud.FPlayFire();
+
             EXIT_Charging();
             ENTER_Recovering();
         }
