@@ -97,7 +97,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ac4b43bc8e1a5e94fadc2b9dba21fac7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _spd: 5
+  _spd: 2
   _health: 100
   PF_HitByBullet: {fileID: 5325226421071126695, guid: faf126ad3db7b1c4b9c8515f26cb0a9e,
     type: 3}

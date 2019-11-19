@@ -16,6 +16,8 @@ public class PC_Cont : MonoBehaviour
 
     public UI_PC                            rUI;
 
+    public bool                             _invinsible = false;
+
     void Start()
     {
         cRigid = GetComponent<Rigidbody2D>(); 
@@ -118,6 +120,10 @@ public class PC_Cont : MonoBehaviour
 
     private void CheckDead()
     {
+        if(_invinsible){
+            _health = 100f;
+            return;
+        }
         if(_health <= 0f){
             TDC_EventManager.FBroadcast(TDC_GE.GE_PCDeath);
         }

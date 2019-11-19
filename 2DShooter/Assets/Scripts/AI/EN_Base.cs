@@ -28,6 +28,8 @@ public class EN_Base : MonoBehaviour
     public float                        _dropHealthChance = 10f;
     public PCK_Ammo                     PF_AmmoBox;
     public PCK_Health                   PF_HealthBox;
+
+    public float                        _visionDistance = 20f;
  
  
     protected void Start()

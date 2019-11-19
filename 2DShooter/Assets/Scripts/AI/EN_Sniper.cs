@@ -75,6 +75,7 @@ public class EN_Sniper : EN_Base
         }
     }
     private void ENTER_Charging(){
+        cRigid.velocity = Vector3.zero;
         _state = STATE.S_Charging;
         _stateChangeTime = Time.time;
         _laser.enabled = true;
@@ -92,10 +93,17 @@ public class EN_Sniper : EN_Base
         _laser.SetPosition(0, transform.position);
         _laser.SetPosition(1, rPC.transform.position);
 
+        // Now we have shoot out three projectiles in a semi-tight burst.
         if(Time.time - _stateChangeTime > _chargeInterval){
-            PJ_Snipe s = Instantiate(PF_SnipeShot, transform.position, transform.rotation);
-            s.FFireDirection(Vector3.Normalize(rPC.transform.position - transform.position));
-            Debug.Log("Fired Snipe Shot");
+            Vector3 vDir = Vector3.Normalize(rPC.transform.position - transform.position);
+            Vector3 vLeft = Vector3.Cross(vDir, Vector3.up);
+            Debug.DrawRay(transform.position, vLeft, Color.cyan, 1f);
+            PJ_Snipe s1 = Instantiate(PF_SnipeShot, transform.position, transform.rotation);
+            s1.FFireDirection(Vector3.Normalize(vDir + 0.2f*vLeft));
+            PJ_Snipe s2 = Instantiate(PF_SnipeShot, transform.position, transform.rotation);
+            s2.FFireDirection(Vector3.Normalize(vDir));
+            PJ_Snipe s3 = Instantiate(PF_SnipeShot, transform.position, transform.rotation);
+            s1.FFireDirection(Vector3.Normalize(vDir + -0.2f*vLeft));
             EXIT_Charging();
             ENTER_Recovering();
         }

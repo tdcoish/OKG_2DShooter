@@ -180,6 +180,7 @@ MonoBehaviour:
   PF_AmmoBox: {fileID: 1989154103, guid: 1530d05971734bc43bf73179685d512f, type: 3}
   PF_HealthBox: {fileID: 6217487067244641993, guid: 3696c17546f549e4b90ba586a459a52c,
     type: 3}
+  _visionDistance: 10
   _state: 0
   _fireInterval: 3
   _aimInterval: 1

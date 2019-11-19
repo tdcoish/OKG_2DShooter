@@ -1,5 +1,24 @@
 ﻿/************************************************************
 The AI for the security guard.
+
+old pathfinding code:
+        if(fDis > _visionDistance || !canSeePC){
+            _pathList = cPath.FFindPath(transform.position, rPC.transform.position);
+            if(_pathList == null || _pathList.Count == 0)
+            {
+                return;
+            }
+
+            Vector3 vDir = _pathList[0].transform.position - transform.position;
+            cRigid.velocity = Vector3.Normalize(vDir) * _spd;
+
+            for(int i=1; i<_pathList.Count; i++){
+                Debug.DrawLine(_pathList[i].transform.position, _pathList[i-1].transform.position);
+            }
+        }
+
+
+Really, they should be moving to a spot where they can fire at the player.
 ************************************************************/
 using UnityEngine;
 
@@ -50,29 +69,20 @@ public class EN_SecGuard : EN_Base
     private void ENTER_Tracking(){
         _state = STATE.S_Tracking;
     }
+    // If the player is too far away, then we keep tracking them. If not, then we do our attack stuffs.
     private void RUN_Tracking()
     {
-        // if they can see the player, then just move to him. If not, you gotta use pathfinding.
+        // Move towards the player.
+        Vector3 vDir = rPC.transform.position - transform.position;
+        vDir = Vector3.Normalize(vDir);
+        cRigid.velocity = vDir * _spd;
+
+        float fDis = Vector3.Distance(rPC.transform.position, transform.position);
         bool canSeePC = cSeePC.FCanSeePlayer(rPC.transform.position);
-        if(!canSeePC)
-        {
-            _pathList = cPath.FFindPath(transform.position, rPC.transform.position);
-            if(_pathList == null || _pathList.Count == 0)
-            {
-                return;
-            }
-
-            Vector3 vDir = _pathList[0].transform.position - transform.position;
-            cRigid.velocity = Vector3.Normalize(vDir) * _spd;
-
-            for(int i=1; i<_pathList.Count; i++){
-                Debug.DrawLine(_pathList[i].transform.position, _pathList[i-1].transform.position);
-            }
-        }
-        else
-        {
+        if(fDis < _visionDistance && canSeePC){
             ENTER_Aiming();
         }
+
     }
 
     private void ENTER_Aiming(){

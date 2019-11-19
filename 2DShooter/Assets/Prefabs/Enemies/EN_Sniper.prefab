@@ -158,7 +158,7 @@ Transform:
   m_GameObject: {fileID: 4634208466684268158}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -12.814491, y: -13.876308, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.58864, y: 0.58864, z: 0.58864}
   m_Children:
   - {fileID: 413778762}
   m_Father: {fileID: 0}
@@ -296,7 +296,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fa393abd2de08cd44af14569f7fd32af, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _spd: 0
+  _spd: 1
   _health: 100
   PF_HitByBullet: {fileID: 5325226421071126695, guid: faf126ad3db7b1c4b9c8515f26cb0a9e,
     type: 3}
@@ -311,6 +311,6 @@ MonoBehaviour:
   _state: 0
   _laser: {fileID: 413778763}
   _chargeInterval: 2
-  _recoverInterval: 1
+  _recoverInterval: 2
   PF_SnipeShot: {fileID: 6708388573001339941, guid: c4251b56e2601a04c9ebff12084f3696,
     type: 3}
