@@ -4,7 +4,10 @@ he starts charging up his little rifle, before shooting a totally
 unavoidable charge. This charge will not damage the player if the 
 player is behind something that blocks the shot, like a wall.
 
-Need to figure out a way to get a laser drawn.
+Need to figure out a way to get a laser drawn. Done.
+
+Now I need them to sort of shuffle around when they can't see the player.
+Gives them the illusion of intellect.
 ************************************************************/
 using UnityEngine;
 
@@ -13,7 +16,7 @@ public class EN_Sniper : EN_Base
 
     public enum STATE
     {
-        S_Tracking,
+        S_IdleMove,
         S_Charging,
         S_Recovering
     }
@@ -25,19 +28,26 @@ public class EN_Sniper : EN_Base
     public float                                _chargeInterval;
     public float                                _recoverInterval;
 
+    public float                                _idleMoveInterval = 3f;
+    private float                               _lastIdleMoveTime;
+    private Vector3                             _idleMoveSpot;
+
+    public float                                _rotPerSec = 15f;
+
     public PJ_Snipe                             PF_SnipeShot;
 
     void Start()
     {
         base.Start();
         _laser.enabled = false;
+        _lastIdleMoveTime = _idleMoveInterval*-1f;
     }
 
 
     void Update()
     {
         switch(_state){
-            case STATE.S_Tracking: RUN_Tracking();break;
+            case STATE.S_IdleMove: RUN_IdleMoving();break;
             case STATE.S_Charging: RUN_Charging(); break;
             case STATE.S_Recovering: RUN_Recovering(); break;
         }
@@ -47,12 +57,22 @@ public class EN_Sniper : EN_Base
         }
     }
 
-    private void ENTER_Tracking(){
-        _state = STATE.S_Tracking;
+    private void ENTER_IdleMoving(){
+        _state = STATE.S_IdleMove;
     }
-    private void RUN_Tracking()
+    // The snipers just try to move back and forth. For now just have them getting to a spot that's to the left of them?
+    private void RUN_IdleMoving()
     {
-        Vector3 vDir = Vector3.Normalize(rPC.transform.position - transform.position);
+        // figure out if we need a new idle movement spot. Something really close to where we currently are.
+        if(Time.time - _lastIdleMoveTime >= _idleMoveInterval){
+            _lastIdleMoveTime = Time.time;
+            _idleMoveSpot = transform.position;
+            _idleMoveSpot.x += Random.Range(-3f, 3f);
+            _idleMoveSpot.y += Random.Range(-3f, 3f);
+        }
+
+        // just sort of aimlessly pick a spot near you and slowly move there.
+        Vector3 vDir = Vector3.Normalize(_idleMoveSpot - transform.position);
         cRigid.velocity = vDir * _spd;
 
         // if they can see the player, then just move to him. If not, you gotta use pathfinding.
@@ -74,7 +94,7 @@ public class EN_Sniper : EN_Base
         bool canSeePC = cSeePC.FCanSeePlayer(rPC.transform.position);
         if(!canSeePC){
             EXIT_Charging();
-            ENTER_Tracking();
+            ENTER_IdleMoving();
             return;
         }
 
@@ -106,7 +126,7 @@ public class EN_Sniper : EN_Base
     private void RUN_Recovering()
     {
         if(Time.time - _stateChangeTime > _recoverInterval){
-            ENTER_Tracking();
+            ENTER_IdleMoving();
         }
     }
 
