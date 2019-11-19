@@ -296,7 +296,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fa393abd2de08cd44af14569f7fd32af, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _spd: 1
+  _spd: 0.5
   _health: 100
   PF_HitByBullet: {fileID: 5325226421071126695, guid: faf126ad3db7b1c4b9c8515f26cb0a9e,
     type: 3}
@@ -313,5 +313,7 @@ MonoBehaviour:
   _laser: {fileID: 413778763}
   _chargeInterval: 2
   _recoverInterval: 2
+  _idleMoveInterval: 3
+  _rotPerSec: 15
   PF_SnipeShot: {fileID: 6708388573001339941, guid: c4251b56e2601a04c9ebff12084f3696,
     type: 3}
