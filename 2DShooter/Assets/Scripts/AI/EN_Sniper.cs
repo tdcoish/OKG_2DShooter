@@ -101,13 +101,18 @@ public class EN_Sniper : EN_Base
             return;
         }
 
-        // rotate towards the player.
+        // Figure out what the current z angle is (rotation)
+        // Figure out what the z angle would be if we were looking at the PC.
+        // Step towards that in the maximum amount allowable by our rotation rate.
+
         Vector2 vDirToPC = rPC.transform.position - transform.position;
         float fGoalAngle = Mathf.Atan2(vDirToPC.y, vDirToPC.x) * Mathf.Rad2Deg;
+        fGoalAngle -= 90f;
+        if(fGoalAngle < 0f) fGoalAngle += 360f;
+        // transform.eulerAngles = new Vector3(0, 0, fGoalAngle);
         float fCurAngle = transform.rotation.eulerAngles.z;
-        fCurAngle -= 180f;
-
-        // Debug.Log("Cur angle: " + fCurAngle);
+        Debug.Log("Current angle: " + fCurAngle);
+        Debug.Log("Goal angle: " + fGoalAngle);
 
         float fDif = fGoalAngle - fCurAngle;
         // now we need to maximize the difference as only the maximum that we can turn per frame.
@@ -115,13 +120,29 @@ public class EN_Sniper : EN_Base
         if(Mathf.Abs(fDif) > fMaxTurnPerFrame){
             fDif *= fMaxTurnPerFrame / Mathf.Abs(fDif);
         }
+        transform.eulerAngles = new Vector3(0, 0, fCurAngle + fDif);
 
-        transform.eulerAngles = new Vector3(0, 0, transform.rotation.eulerAngles.z + fDif);
-
+        // float fNewAngle = transform.rotation.eulerAngles.z;
+        // transform.eulerAngles = new Vector3(0, 0, transform.rotation.eulerAngles.z + fDif);
 
         // Now the laser gets shot out and hits whatever we're looking at.
         _laser.positionCount = 2;
         _laser.SetPosition(0, transform.position);
+        
+        Vector3 vDir2 = transform.up;
+        Debug.DrawLine(transform.position, transform.position + vDir2*10f, Color.cyan);
+        LayerMask mask = LayerMask.GetMask("PC", "Level Geometry", "Obstacles");
+        RaycastHit2D hit = Physics2D.Raycast(transform.position, vDir2, 10000f, mask);
+        if(hit.collider != null){
+            if(hit.collider.GetComponent<PC_Cont>() == null)
+            {
+                _laser.SetPosition(1, hit.transform.position);
+            }
+        }
+        else{
+            _laser.SetPosition(1, (transform.position + transform.forward*10f));
+        }
+
         _laser.SetPosition(1, rPC.transform.position);
 
         // Now we have shoot out three projectiles in a semi-tight burst.
