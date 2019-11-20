@@ -114,7 +114,10 @@ public class EN_Sniper : EN_Base
         Debug.Log("Current angle: " + fCurAngle);
         Debug.Log("Goal angle: " + fGoalAngle);
 
+        // here we need to see if the abs of the max is greater than 180, then we rotate in the opposite direction?
+
         float fDif = fGoalAngle - fCurAngle;
+        if(Mathf.Abs(fDif) > 180f) fDif *= -1f;
         // now we need to maximize the difference as only the maximum that we can turn per frame.
         float fMaxTurnPerFrame = Time.deltaTime * _rotPerSec;
         if(Mathf.Abs(fDif) > fMaxTurnPerFrame){

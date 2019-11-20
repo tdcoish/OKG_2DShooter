@@ -416,6 +416,11 @@ PrefabInstance:
       propertyPath: _recoverInterval
       value: 0.1
       objectReference: {fileID: 0}
+    - target: {fileID: 1554021497944887666, guid: 859855f630398f44589ba40455755e5e,
+        type: 3}
+      propertyPath: _rotPerSec
+      value: 10
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 859855f630398f44589ba40455755e5e, type: 3}
 --- !u!1 &407344801
