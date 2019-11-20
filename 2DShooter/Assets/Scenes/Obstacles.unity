@@ -1372,7 +1372,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1096099544}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: ArenaBorders
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1535,7 +1535,7 @@ GameObject:
   - component: {fileID: 1163737039}
   - component: {fileID: 1163737041}
   - component: {fileID: 1163737040}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: ENV_Border (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1842,7 +1842,7 @@ GameObject:
   - component: {fileID: 1304464567}
   - component: {fileID: 1304464569}
   - component: {fileID: 1304464568}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: ENV_Border (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2023,7 +2023,7 @@ GameObject:
   - component: {fileID: 1385722545}
   - component: {fileID: 1385722547}
   - component: {fileID: 1385722546}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: ENV_Border (3)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3499,7 +3499,7 @@ GameObject:
   - component: {fileID: 2059088852}
   - component: {fileID: 2059088854}
   - component: {fileID: 2059088853}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: ENV_Border
   m_TagString: Untagged
   m_Icon: {fileID: 0}

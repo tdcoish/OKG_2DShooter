@@ -134,7 +134,7 @@ public class EN_Sniper : EN_Base
         _laser.SetPosition(0, transform.position);
         
         LayerMask mask = LayerMask.GetMask("PC", "Level Geometry", "Obstacles");
-        RaycastHit2D hit = Physics2D.Raycast(transform.position, transform.up, 100f, mask);
+        RaycastHit2D hit = Physics2D.Raycast(transform.position, transform.up, 1000f, mask);
         if(hit.collider != null){
             if(hit.collider.GetComponent<PC_Cont>() == null)
             {
@@ -143,7 +143,7 @@ public class EN_Sniper : EN_Base
             }
         }
         else{
-            _laser.SetPosition(1, (transform.position + transform.up*10f));
+            _laser.SetPosition(1, (transform.position + transform.up*100f));
         }
 
         // Now we have shoot out three projectiles in a semi-tight burst.
