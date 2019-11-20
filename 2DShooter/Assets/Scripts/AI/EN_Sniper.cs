@@ -114,8 +114,6 @@ public class EN_Sniper : EN_Base
         if(fGoalAngle < 0f) fGoalAngle += 360f;
         // transform.eulerAngles = new Vector3(0, 0, fGoalAngle);
         float fCurAngle = transform.rotation.eulerAngles.z;
-        // Debug.Log("Current angle: " + fCurAngle);
-        // Debug.Log("Goal angle: " + fGoalAngle);
 
         // here we need to see if the abs of the max is greater than 180, then we rotate in the opposite direction?
 
@@ -135,7 +133,6 @@ public class EN_Sniper : EN_Base
         _laser.positionCount = 2;
         _laser.SetPosition(0, transform.position);
         
-        Debug.DrawLine(transform.position, transform.position + transform.up*10f, Color.green);
         LayerMask mask = LayerMask.GetMask("PC", "Level Geometry", "Obstacles");
         RaycastHit2D hit = Physics2D.Raycast(transform.position, transform.up, 100f, mask);
         if(hit.collider != null){
@@ -148,11 +145,6 @@ public class EN_Sniper : EN_Base
         else{
             _laser.SetPosition(1, (transform.position + transform.up*10f));
         }
-
-        // Test different rotations.
-        Debug.DrawRay(transform.position, transform.up, Color.grey, 2f);
-        Debug.Log(transform.up);
-        // _laser.SetPosition(1, rPC.transform.position);
 
         // Now we have shoot out three projectiles in a semi-tight burst.
         if(Time.time - _stateChangeTime > _chargeInterval){
