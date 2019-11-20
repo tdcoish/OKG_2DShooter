@@ -158,7 +158,7 @@ Transform:
   m_GameObject: {fileID: 4634208466684268158}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -12.814491, y: -13.876308, z: 0}
-  m_LocalScale: {x: 0.58864, y: 0.58864, z: 0.58864}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 413778762}
   - {fileID: 2718224441056356552}
@@ -315,7 +315,7 @@ MonoBehaviour:
   _chargeInterval: 2
   _recoverInterval: 2
   _idleMoveInterval: 3
-  _rotPerSec: 15
+  _rotPerSec: 180
   PF_SnipeShot: {fileID: 6708388573001339941, guid: c4251b56e2601a04c9ebff12084f3696,
     type: 3}
 --- !u!1 &7052889603889115779

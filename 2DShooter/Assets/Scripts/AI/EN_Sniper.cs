@@ -33,7 +33,7 @@ public class EN_Sniper : EN_Base
     private float                               _lastIdleMoveTime;
     private Vector3                             _idleMoveSpot;
 
-    public float                                _rotPerSec = 15f;
+    public float                                _rotPerSec = 180f;
 
     public PJ_Snipe                             PF_SnipeShot;
 
@@ -91,6 +91,7 @@ public class EN_Sniper : EN_Base
         _stateChangeTime = Time.time;
         _laser.enabled = true;
     }
+    // Now I'm also making them rotate around at a certain rate.
     private void RUN_Charging()
     {
         bool canSeePC = cSeePC.FCanSeePlayer(rPC.transform.position);
@@ -100,6 +101,25 @@ public class EN_Sniper : EN_Base
             return;
         }
 
+        // rotate towards the player.
+        Vector2 vDirToPC = rPC.transform.position - transform.position;
+        float fGoalAngle = Mathf.Atan2(vDirToPC.y, vDirToPC.x) * Mathf.Rad2Deg;
+        float fCurAngle = transform.rotation.eulerAngles.z;
+        fCurAngle -= 180f;
+
+        // Debug.Log("Cur angle: " + fCurAngle);
+
+        float fDif = fGoalAngle - fCurAngle;
+        // now we need to maximize the difference as only the maximum that we can turn per frame.
+        float fMaxTurnPerFrame = Time.deltaTime * _rotPerSec;
+        if(Mathf.Abs(fDif) > fMaxTurnPerFrame){
+            fDif *= fMaxTurnPerFrame / Mathf.Abs(fDif);
+        }
+
+        transform.eulerAngles = new Vector3(0, 0, transform.rotation.eulerAngles.z + fDif);
+
+
+        // Now the laser gets shot out and hits whatever we're looking at.
         _laser.positionCount = 2;
         _laser.SetPosition(0, transform.position);
         _laser.SetPosition(1, rPC.transform.position);
